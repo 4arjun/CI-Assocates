@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail } from 'lucide-react';
+import { ChevronDown, ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail, Menu, X } from 'lucide-react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import './App.css';
 
@@ -8,6 +8,7 @@ const App = () => {
   const [activeTab, setActiveTab] = useState('All');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,14 @@ const App = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const services = [
     {
@@ -178,27 +187,80 @@ const App = () => {
             >
               <span>snazzybud</span>
             </motion.div>
+            
+            {/* Desktop Navigation */}
             <motion.nav 
-              className="nav"
+              className="nav desktop-nav"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <a href="#about">About us</a>
-              <a href="#services">Services</a>
-              <a href="#stats">Company in numbers</a>
-              <a href="#testimonials">Testimonials</a>
+              <a href="#about" onClick={closeMobileMenu}>About us</a>
+              <a href="#services" onClick={closeMobileMenu}>Services</a>
+              <a href="#stats" onClick={closeMobileMenu}>Company in numbers</a>
+              <a href="#testimonials" onClick={closeMobileMenu}>Testimonials</a>
               <motion.a 
                 href="#contact" 
                 className="btn btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={closeMobileMenu}
+              >
+                Contact us
+              </motion.a>
+            </motion.nav>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="mobile-menu-btn"
+              onClick={toggleMobileMenu}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Overlay */}
+        <motion.div 
+          className={`mobile-nav-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+          initial={{ opacity: 0, x: '100%' }}
+          animate={{ 
+            opacity: isMobileMenuOpen ? 1 : 0,
+            x: isMobileMenuOpen ? '0%' : '100%'
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          <div className="mobile-nav-content">
+            <motion.nav 
+              className="mobile-nav"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ 
+                opacity: isMobileMenuOpen ? 1 : 0,
+                y: isMobileMenuOpen ? 0 : 20
+              }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              <a href="#about" onClick={closeMobileMenu}>About us</a>
+              <a href="#services" onClick={closeMobileMenu}>Services</a>
+              <a href="#stats" onClick={closeMobileMenu}>Company in numbers</a>
+              <a href="#testimonials" onClick={closeMobileMenu}>Testimonials</a>
+              <motion.a 
+                href="#contact" 
+                className="btn btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={closeMobileMenu}
               >
                 Contact us
               </motion.a>
             </motion.nav>
           </div>
-        </div>
+        </motion.div>
       </motion.header>
 
       {/* Hero Section */}
@@ -511,13 +573,6 @@ const App = () => {
                 </div>
               </motion.div>
             ))}
-            <motion.div 
-              className="project-nav"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ArrowRight size={28} />
-            </motion.div>
           </motion.div>
         </div>
       </section>
