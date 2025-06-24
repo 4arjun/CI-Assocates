@@ -1,7 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail, Menu, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail, Menu, X } from 'lucide-react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import './App.css';
+import SplashScreen from './SplashScreen';
+
+// Custom hook for counting animation
+const useCountUp = (end, duration = 2000, delay = 0, startValue = 0) => {
+  const [count, setCount] = useState(startValue);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!isInView) {
+      setCount(startValue);
+      return;
+    }
+
+    const startTime = Date.now();
+
+    const timer = setInterval(() => {
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime - delay;
+
+      if (elapsed >= duration) {
+        setCount(end);
+        clearInterval(timer);
+        return;
+      }
+
+      if (elapsed > 0) {
+        const progress = elapsed / duration;
+        const currentCount = Math.floor(startValue + (end - startValue) * progress);
+        setCount(currentCount);
+      }
+    }, 16); // ~60fps
+
+    return () => clearInterval(timer);
+  }, [end, duration, delay, isInView, startValue]);
+
+  return [count, setIsInView];
+};
+
+// Stat Item Component with counting animation
+const StatItem = ({ number, label, suffix = "", startValue = 0 }) => {
+  const [count, setIsInView] = useCountUp(number, 2000, 500, startValue);
+  
+  return (
+    <motion.div 
+      className="stat-item"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      whileInView={() => setIsInView(true)}
+      onViewportLeave={() => setIsInView(false)}
+      viewport={{ once: false, amount: 0.3 }}
+    >
+      <span className="stat-number">
+        {count.toLocaleString()}{suffix}
+      </span>
+      <span className="stat-label">{label}</span>
+    </motion.div>
+  );
+};
 
 const App = () => {
   const [activeService, setActiveService] = useState(0);
@@ -9,14 +68,34 @@ const App = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Disable hover effects during scrolling
+      setIsScrolling(true);
+      document.body.classList.add('scrolling');
+      clearTimeout(window.scrollTimeout);
+      window.scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+        document.body.classList.remove('scrolling');
+      }, 150); // Re-enable hover effects 150ms after scrolling stops
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(window.scrollTimeout);
+      document.body.classList.remove('scrolling');
+    };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 2200);
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleMobileMenu = () => {
@@ -136,7 +215,7 @@ const App = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Animation variants
+  // Animation variants with conditional hover effects
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -164,9 +243,38 @@ const App = () => {
   };
 
   const scaleOnHover = {
-    whileHover: { scale: 1.05 },
+    whileHover: isScrolling ? {} : { scale: 1.05 },
     whileTap: { scale: 0.95 }
   };
+
+  const hoverUp = {
+    whileHover: isScrolling ? {} : { y: -10, scale: 1.05 },
+    transition: { duration: 0.3 }
+  };
+
+  const hoverScale = {
+    whileHover: isScrolling ? {} : { scale: 1.02 },
+    transition: { duration: 0.3 }
+  };
+
+  const hoverImage = {
+    whileHover: isScrolling ? {} : { scale: 1.1 },
+    transition: { duration: 0.3 }
+  };
+
+  const hoverButton = {
+    whileHover: isScrolling ? {} : { scale: 1.05, y: -2 },
+    whileTap: { scale: 0.95 }
+  };
+
+  const hoverSocial = {
+    whileHover: isScrolling ? {} : { scale: 1.1, y: -3 },
+    whileTap: { scale: 0.9 }
+  };
+
+  if (showSplash) {
+    return <SplashScreen />;
+  }
 
   return (
     <div className="App">
@@ -202,8 +310,7 @@ const App = () => {
               <motion.a 
                 href="#contact" 
                 className="btn btn-secondary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                {...hoverButton}
                 onClick={closeMobileMenu}
               >
                 Contact us
@@ -217,8 +324,7 @@ const App = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              {...hoverButton}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -252,8 +358,7 @@ const App = () => {
               <motion.a 
                 href="#contact" 
                 className="btn btn-secondary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                {...hoverButton}
                 onClick={closeMobileMenu}
               >
                 Contact us
@@ -288,8 +393,7 @@ const App = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              {...hoverButton}
             >
               See our services
             </motion.a>
@@ -298,129 +402,81 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="about section">
+      <section id="about" className="section about">
         <div className="container">
           <div className="about-grid">
             <motion.div 
-              className="about-image"
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <motion.img 
-                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                alt="Construction worker"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.div>
-            <motion.div 
               className="about-content"
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <motion.p 
                 className="section-subtitle"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Who we are?
+                About 
               </motion.p>
               <motion.h2 
                 className="section-title"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                About our company
+                21+ years on the market
               </motion.h2>
-              <motion.p 
+              <motion.div 
                 className="about-text"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                We are a dynamic construction company with passion and experience, 
-                specializing in comprehensive construction services. Our team of 
-                qualified specialists, including architects and engineers, ensures high 
-                quality in the projects we undertake.
-              </motion.p>
-              <motion.p 
-                className="about-text"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                We engage in both the construction of new facilities and the renovation 
-                and modernization of existing buildings. Our mission is to create durable 
-                and aesthetically pleasing solutions tailored to the individual needs and 
-                expectations of our clients.
-              </motion.p>
-              <motion.a 
-                href="#contact" 
-                className="btn btn-secondary"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get to know us better
-              </motion.a>
+                <p>CA Associates is a leading construction company with over two decades of experience in delivering exceptional construction services.</p>
+                <p>We specialize in residential, commercial, and industrial projects with a commitment to quality and customer satisfaction.</p>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              className="about-stats"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <div className="stats-partition"></div>
+              <StatItem 
+                number={38} 
+                label="Years of Excellence"
+                suffix="+"
+                startValue={25}
+              />
+              <StatItem 
+                number={300} 
+                label="Projects Completed"
+                suffix="+"
+                startValue={150}
+              />
+              <StatItem 
+                number={180} 
+                label="Mn. Sq. Ft. Delivered"
+                suffix="+"
+                startValue={100}
+              />
+              <StatItem 
+                number={170} 
+                label="Mn. Sq. Ft. Underway"
+                suffix="+"
+                startValue={80}
+              />
             </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <section id="stats" className="stats-section">
-        <div className="stats-background">
-          <div className="stats-overlay"></div>
-        </div>
-        <motion.div 
-          className="stats-content"
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <motion.div 
-            className="stat-item"
-            variants={fadeInUp}
-            whileHover={{ y: -10, scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="stat-number">+21</span>
-            <span className="stat-label">years on<br />the market</span>
-          </motion.div>
-          <motion.div 
-            className="stat-item"
-            variants={fadeInUp}
-            whileHover={{ y: -10, scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="stat-number">+33,107</span>
-            <span className="stat-label">meters of installed<br />installation</span>
-          </motion.div>
-          <motion.div 
-            className="stat-item"
-            variants={fadeInUp}
-            whileHover={{ y: -10, scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="stat-number">+715</span>
-            <span className="stat-label">completed<br />construction works</span>
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* Services Section */}
@@ -471,8 +527,7 @@ const App = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                {...hoverButton}
               >
                 Go to pricing
               </motion.a>
@@ -487,8 +542,7 @@ const App = () => {
               <motion.img 
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
                 alt="Construction worker"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                {...hoverScale}
               />
             </motion.div>
           </div>
@@ -531,8 +585,7 @@ const App = () => {
                 key={tab}
                 className={`tab ${activeTab === tab ? 'active' : ''}`}
                 onClick={() => setActiveTab(tab)}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                {...hoverButton}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -555,15 +608,13 @@ const App = () => {
                 key={index} 
                 className="project-card"
                 variants={fadeInUp}
-                whileHover={{ y: -15, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                {...hoverUp}
               >
                 <div className="project-image">
                   <motion.img 
                     src={project.image} 
                     alt={project.title}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
+                    {...hoverImage}
                   />
                 </div>
                 <div className="project-content">
@@ -633,16 +684,14 @@ const App = () => {
                 <motion.button 
                   className="nav-btn" 
                   onClick={prevTestimonial}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  {...hoverButton}
                 >
                   <ArrowLeft size={24} />
                 </motion.button>
                 <motion.button 
                   className="nav-btn" 
                   onClick={nextTestimonial}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  {...hoverButton}
                 >
                   <ArrowRight size={24} />
                 </motion.button>
@@ -658,8 +707,7 @@ const App = () => {
               <motion.img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
                 alt="Customer"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                {...hoverScale}
               />
             </motion.div>
           </div>
@@ -694,8 +742,7 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              {...hoverButton}
             >
               Contact us
             </motion.a>
@@ -788,16 +835,14 @@ const App = () => {
                 <motion.a 
                   href="#" 
                   aria-label="Facebook"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
+                  {...hoverSocial}
                 >
                   <Facebook size={24} />
                 </motion.a>
                 <motion.a 
                   href="#" 
                   aria-label="LinkedIn"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
+                  {...hoverSocial}
                 >
                   <Linkedin size={24} />
                 </motion.a>
