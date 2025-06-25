@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail, Menu, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail } from 'lucide-react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import './App.css';
 import SplashScreen from './SplashScreen';
+import logoImage from './assets/aa.avif';
 
 // Custom hook for counting animation
 const useCountUp = (end, duration = 2000, delay = 0, startValue = 0) => {
@@ -285,17 +286,50 @@ const App = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <div className="container">
-          <div className="nav-container">
+        {/* SVG Diagonal Partition */}
+        <div className="nav-partition-svg">
+          <svg 
+            viewBox="0 0 400 80" 
+            className="partition-svg"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="partitionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#E91E63" />
+                <stop offset="30%" stopColor="#FF6B35" />
+                <stop offset="60%" stopColor="#FFB347" />
+                <stop offset="100%" stopColor="#FFCCCB" />
+              </linearGradient>
+            </defs>
+            {/* First chevron segment */}
+            <path 
+              d="M0,0 L240,0 L290,40 L240,80 L0,80 Z" 
+              fill="url(#partitionGradient)"
+              opacity="0.9"
+            />            
+          
+          </svg>
+          
+          {/* Logo and Company Name inside partition */}
+          <div className="partition-content">
             <motion.div 
               className="logo"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <span>snazzybud</span>
+              <div className="logo-icon">
+                <img src={logoImage} alt="CA Associates Logo" />
+              </div>
+              <div className="logo-text">
+                <span className="company-name">CA ASSOCIATES</span>
+              </div>
             </motion.div>
-            
+          </div>
+        </div>
+        
+        <div className="container">
+          <div className="nav-container">
             {/* Desktop Navigation */}
             <motion.nav 
               className="nav desktop-nav"
@@ -303,18 +337,10 @@ const App = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <a href="#about" onClick={closeMobileMenu}>About us</a>
+              <a href="#about" onClick={closeMobileMenu}>About</a>
               <a href="#services" onClick={closeMobileMenu}>Services</a>
-              <a href="#stats" onClick={closeMobileMenu}>Company in numbers</a>
-              <a href="#testimonials" onClick={closeMobileMenu}>Testimonials</a>
-              <motion.a 
-                href="#contact" 
-                className="btn btn-secondary"
-                {...hoverButton}
-                onClick={closeMobileMenu}
-              >
-                Contact us
-              </motion.a>
+              <a href="#gallery" onClick={closeMobileMenu}>Projects</a>
+             
             </motion.nav>
 
             {/* Mobile Menu Button */}
@@ -326,7 +352,11 @@ const App = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               {...hoverButton}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <span className="hamburger">
+                <span className={`line ${isMobileMenuOpen ? 'open' : ''}`}></span>
+                <span className={`line ${isMobileMenuOpen ? 'open' : ''}`}></span>
+                <span className={`line ${isMobileMenuOpen ? 'open' : ''}`}></span>
+              </span>
             </motion.button>
           </div>
         </div>
@@ -351,17 +381,16 @@ const App = () => {
               }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <a href="#about" onClick={closeMobileMenu}>About us</a>
+              <a href="#about" onClick={closeMobileMenu}>About</a>
               <a href="#services" onClick={closeMobileMenu}>Services</a>
-              <a href="#stats" onClick={closeMobileMenu}>Company in numbers</a>
-              <a href="#testimonials" onClick={closeMobileMenu}>Testimonials</a>
+              <a href="#gallery" onClick={closeMobileMenu}>Gallery</a>
               <motion.a 
                 href="#contact" 
-                className="btn btn-secondary"
+                className="btn btn-primary"
                 {...hoverButton}
                 onClick={closeMobileMenu}
               >
-                Contact us
+                Contact Us
               </motion.a>
             </motion.nav>
           </div>
