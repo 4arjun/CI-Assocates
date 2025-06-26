@@ -71,6 +71,59 @@ const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Carousel data
+  const slides = [
+    {
+      id: 1,
+      title: "Professional Construction Services",
+      subtitle: "Building Excellence Since 1985",
+      description: "Transform your vision into reality with our expert construction team. From residential homes to commercial complexes, we deliver quality that stands the test of time.",
+      image: "https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      buttonText: "Our Services",
+      buttonLink: "#services"
+    },
+    {
+      id: 2,
+      title: "Modern Architecture & Design",
+      subtitle: "Innovation Meets Craftsmanship",
+      description: "Experience cutting-edge architectural design combined with traditional craftsmanship. Our award-winning team creates spaces that inspire and endure.",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      buttonText: "View Portfolio",
+      buttonLink: "#projects"
+    },
+    {
+      id: 3,
+      title: "Sustainable Building Solutions",
+      subtitle: "Green Construction for Tomorrow",
+      description: "Leading the way in eco-friendly construction with sustainable materials and energy-efficient designs that protect our planet while saving you money.",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      buttonText: "Learn More",
+      buttonLink: "#about"
+    }
+  ];
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -397,36 +450,118 @@ const App = () => {
         </motion.div>
       </motion.header>
 
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-background">
-          <div className="hero-overlay"></div>
-        </div>
-        <div className="container">
-          <motion.div 
-            className="hero-content"
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+      {/* Carousel Section */}
+      <section className="carousel-section">
+        <div className="carousel-container">
+          <div className="carousel-wrapper">
+            {slides.map((slide, index) => (
+              <motion.div
+                key={slide.id}
+                className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: index === currentSlide ? 1 : 0,
+                  scale: index === currentSlide ? 1 : 1.1
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                }}
+              >
+                <div className="carousel-overlay"></div>
+                <div className="carousel-content">
+                  <motion.span 
+                    className="carousel-subtitle"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ 
+                      opacity: index === currentSlide ? 1 : 0,
+                      y: index === currentSlide ? 0 : 30
+                    }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    {slide.subtitle}
+                  </motion.span>
+                  <motion.h1 
+                    className="carousel-title"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ 
+                      opacity: index === currentSlide ? 1 : 0,
+                      y: index === currentSlide ? 0 : 50
+                    }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  >
+                    {slide.title}
+                  </motion.h1>
+                  <motion.p 
+                    className="carousel-description"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ 
+                      opacity: index === currentSlide ? 1 : 0,
+                      y: index === currentSlide ? 0 : 30
+                    }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
+                    {slide.description}
+                  </motion.p>
+                  <motion.a 
+                    href={slide.buttonLink} 
+                    className="carousel-button"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ 
+                      opacity: index === currentSlide ? 1 : 0,
+                      y: index === currentSlide ? 0 : 20
+                    }}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {slide.buttonText}
+                  </motion.a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Navigation Arrows */}
+          <motion.button 
+            className="carousel-nav carousel-prev"
+            onClick={prevSlide}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-            >
-              Professional construction services<br />for <span className="highlight">your needs</span>
-            </motion.h1>
-            <motion.a 
-              href="#services" 
-              className="btn btn-primary"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
-              {...hoverButton}
-            >
-              See our services
-            </motion.a>
-          </motion.div>
+            <ArrowLeft size={24} />
+          </motion.button>
+          <motion.button 
+            className="carousel-nav carousel-next"
+            onClick={nextSlide}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <ArrowRight size={24} />
+          </motion.button>
+          
+          {/* Slide Indicators */}
+          <div className="carousel-indicators">
+            {slides.map((_, index) => (
+              <motion.button
+                key={index}
+                className={`carousel-indicator ${index === currentSlide ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              />
+            ))}
+          </div>
+          
+          {/* Progress Bar */}
+          <div className="carousel-progress">
+            <motion.div 
+              className="carousel-progress-bar"
+              initial={{ width: 0 }}
+              animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
         </div>
       </section>
 
@@ -468,6 +603,11 @@ const App = () => {
               >
                 <p>CA Associates is a leading construction company with over two decades of experience in delivering exceptional construction services.</p>
                 <p>We specialize in residential, commercial, and industrial projects with a commitment to quality and customer satisfaction.</p>
+
+                <br></br>
+                <p>We specialize in residential, commercial, and industrial projects with a commitment to quality and customer satisfaction.</p>
+                <p>CA Associates is a leading construction company with over two decades of experience in delivering exceptional construction services.</p>
+
               </motion.div>
             </motion.div>
             
@@ -580,316 +720,59 @@ const App = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="gallery section">
+      {/* Projects Section */}
+      <section className="projects-section">
         <div className="container">
-          <motion.p 
-            className="section-subtitle"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Gallery
-          </motion.p>
-          <motion.h2 
-            className="section-title"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            Our Realizations
-          </motion.h2>
-          
-          <motion.div 
-            className="gallery-tabs"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {['All', 'Houses', 'Blocks of flats', 'Garages', 'Hotels'].map((tab, index) => (
-              <motion.button 
-                key={tab}
-                className={`tab ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-                {...hoverButton}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
-              >
-                {tab}
-              </motion.button>
-            ))}
-          </motion.div>
-
-          <motion.div 
-            className="projects-grid"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {filteredProjects.map((project, index) => (
-              <motion.div 
-                key={index} 
-                className="project-card"
-                variants={fadeInUp}
-                {...hoverUp}
-              >
-                <div className="project-image">
-                  <motion.img 
-                    src={project.image} 
-                    alt={project.title}
-                    {...hoverImage}
-                  />
-                </div>
-                <div className="project-content">
-                  <span className="project-category">{project.category}</span>
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="testimonials section">
-        <div className="container">
-          <motion.p 
-            className="section-subtitle"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Testimonials
-          </motion.p>
-          <motion.h2 
-            className="section-title"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            Our customers' opinions
-          </motion.h2>
-          
-          <div className="testimonial-content">
-            <motion.div 
-              className="testimonial-text"
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-              key={currentTestimonial}
-            >
-              <motion.blockquote
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                "{testimonials[currentTestimonial].text}"
-              </motion.blockquote>
-              <motion.div 
-                className="testimonial-author"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <strong>{testimonials[currentTestimonial].author}</strong>
-                <span>{testimonials[currentTestimonial].position}</span>
-              </motion.div>
-              <motion.div 
-                className="testimonial-nav"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <motion.button 
-                  className="nav-btn" 
-                  onClick={prevTestimonial}
-                  {...hoverButton}
-                >
-                  <ArrowLeft size={24} />
-                </motion.button>
-                <motion.button 
-                  className="nav-btn" 
-                  onClick={nextTestimonial}
-                  {...hoverButton}
-                >
-                  <ArrowRight size={24} />
-                </motion.button>
-              </motion.div>
-            </motion.div>
-            <motion.div 
-              className="testimonial-image"
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <motion.img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                alt="Customer"
-                {...hoverScale}
-              />
-            </motion.div>
+          <div className="featured-projects-header">
+            <span className="featured-projects-badge">Project</span>
+            <h2 className="featured-projects-title">Featured Project</h2>
+            <p className="featured-projects-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          <div className="featured-projects-grid">
+            {/* Project Card 1 */}
+            <div className="featured-project-card">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Branding & Design" className="featured-project-image" />
+              <div className="featured-project-content">
+                <h3 className="featured-project-title">Branding & Design</h3>
+                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
+                <button className="featured-project-btn">View Project</button>
+              </div>
+            </div>
+            {/* Project Card 2 */}
+            <div className="featured-project-card">
+              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" className="featured-project-image" />
+              <div className="featured-project-content">
+                <h3 className="featured-project-title">UI/UX Design</h3>
+                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
+                <button className="featured-project-btn">View Project</button>
+              </div>
+            </div>
+            {/* Project Card 3 */}
+            <div className="featured-project-card">
+              <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80" alt="Development" className="featured-project-image" />
+              <div className="featured-project-content">
+                <h3 className="featured-project-title">Development</h3>
+                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
+                <button className="featured-project-btn">View Project</button>
+              </div>
+            </div>
+            {/* Project Card 4 */}
+            <div className="featured-project-card">
+              <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80" alt="Marketing" className="featured-project-image" />
+              <div className="featured-project-content">
+                <h3 className="featured-project-title">Marketing</h3>
+                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
+                <button className="featured-project-btn">View Project</button>
+              </div>
+            </div>
+          </div>
+          <div className="featured-projects-footer">
+            <button className="featured-view-all-btn">View all</button>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-background">
-          <div className="cta-overlay"></div>
-        </div>
-        <div className="container">
-          <motion.div 
-            className="cta-content"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Don't wait for your dreams!<br />Make them with us now!
-            </motion.h2>
-            <motion.a 
-              href="#contact" 
-              className="btn btn-secondary"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              {...hoverButton}
-            >
-              Contact us
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer id="contact" className="footer">
-        <div className="container">
-          <motion.div 
-            className="footer-content"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <motion.div 
-              className="footer-section"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="footer-logo">
-                <span>snazzystudio</span>
-              </div>
-              <p>A comprehensive construction service provider in southern Poland, dedicated to bringing your architectural dreams to life with precision and expertise.</p>
-              <div className="footer-contact">
-                <a href="mailto:contact@snazzystudio.com">contact@snazzystudio.com</a>
-                <a href="tel:+48601918812">+48 601 918 812</a>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="footer-section"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h4>Company</h4>
-              <ul>
-                <li><a href="#about">About us</a></li>
-                <li><a href="#gallery">Realizations</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </motion.div>
-            
-            <motion.div 
-              className="footer-section"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <h4>Services</h4>
-              <ul>
-                <li><a href="#">General contracting</a></li>
-                <li><a href="#">Design & implementation</a></li>
-                <li><a href="#">Renovation & modernization</a></li>
-              </ul>
-            </motion.div>
-            
-            <motion.div 
-              className="footer-section"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <h4>Other</h4>
-              <ul>
-                <li><a href="#">Tenders</a></li>
-                <li><a href="#">EU projects</a></li>
-              </ul>
-            </motion.div>
-            
-            <motion.div 
-              className="footer-section"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h4>Social media</h4>
-              <div className="social-links">
-                <motion.a 
-                  href="#" 
-                  aria-label="Facebook"
-                  {...hoverSocial}
-                >
-                  <Facebook size={24} />
-                </motion.a>
-                <motion.a 
-                  href="#" 
-                  aria-label="LinkedIn"
-                  {...hoverSocial}
-                >
-                  <Linkedin size={24} />
-                </motion.a>
-              </div>
-            </motion.div>
-          </motion.div>
-          
-          <motion.div 
-            className="footer-bottom"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p>© 2023 Snazzybud. All rights reserved</p>
-          </motion.div>
-        </div>
-      </footer>
     </div>
   );
 };
