@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Facebook, Linkedin, Phone, Mail, MapPin, Clock, Twitter, Instagram, Youtube, Send, ArrowUp } from 'lucide-react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import './App.css';
 import SplashScreen from './SplashScreen';
@@ -372,10 +372,10 @@ const App = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <div className="logo-icon">
-                <img src={logoImage} alt="CA Associates Logo" />
+                <img src={logoImage} alt="CI Associates Logo" />
               </div>
               <div className="logo-text">
-                <span className="company-name">CA ASSOCIATES</span>
+                <span className="company-name">CI ASSOCIATES</span>
               </div>
             </motion.div>
           </div>
@@ -392,7 +392,7 @@ const App = () => {
             >
               <a href="#about" onClick={closeMobileMenu}>About</a>
               <a href="#services" onClick={closeMobileMenu}>Services</a>
-              <a href="#gallery" onClick={closeMobileMenu}>Projects</a>
+              <a href="#projects" onClick={closeMobileMenu}>Projects</a>
              
             </motion.nav>
 
@@ -425,6 +425,22 @@ const App = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <div className="mobile-nav-content">
+            {/* Close Button */}
+            <motion.button
+              className="mobile-nav-close"
+              onClick={closeMobileMenu}
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ 
+                opacity: isMobileMenuOpen ? 1 : 0,
+                rotate: isMobileMenuOpen ? 0 : -90
+              }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              ×
+            </motion.button>
+            
             <motion.nav 
               className="mobile-nav"
               initial={{ opacity: 0, y: 20 }}
@@ -436,7 +452,7 @@ const App = () => {
             >
               <a href="#about" onClick={closeMobileMenu}>About</a>
               <a href="#services" onClick={closeMobileMenu}>Services</a>
-              <a href="#gallery" onClick={closeMobileMenu}>Gallery</a>
+              <a href="#projects" onClick={closeMobileMenu}>Projects</a>
               <motion.a 
                 href="#contact" 
                 className="btn btn-primary"
@@ -721,56 +737,213 @@ const App = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="projects-section">
+      <section id="projects" className="projects-section section">
         <div className="container">
-          <div className="featured-projects-header">
-            <span className="featured-projects-badge">Project</span>
-            <h2 className="featured-projects-title">Featured Project</h2>
-            <p className="featured-projects-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </div>
-          <div className="featured-projects-grid">
+          <motion.div 
+            className="projects-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.span 
+              className="section-subtitle"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Our Portfolio
+            </motion.span>
+            <motion.h2 
+              className="section-title"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              Featured Construction Projects
+            </motion.h2>
+            <motion.p 
+              className="projects-description"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Discover our portfolio of exceptional construction projects that showcase our commitment to quality, 
+              innovation, and architectural excellence across residential and commercial developments.
+            </motion.p>
+          </motion.div>
+          
+          <div className="projects-grid">
             {/* Project Card 1 */}
-            <div className="featured-project-card">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Branding & Design" className="featured-project-image" />
-              <div className="featured-project-content">
-                <h3 className="featured-project-title">Branding & Design</h3>
-                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
-                <button className="featured-project-btn">View Project</button>
+            <motion.div 
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Luxury Residential Complex" />
+                <div className="project-category">Residential</div>
               </div>
-            </div>
+              <div className="project-content">
+                <h3 className="project-title">Luxury Residential Complex</h3>
+                <p className="project-description">
+                  A modern 50-unit residential complex featuring sustainable design, energy-efficient systems, and premium amenities for contemporary living.
+                </p>
+                <div className="project-details">
+                  <span className="project-detail">150 Units</span>
+                  <span className="project-detail">2023</span>
+                  <span className="project-detail">LEED Certified</span>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Project Card 2 */}
-            <div className="featured-project-card">
-              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" className="featured-project-image" />
-              <div className="featured-project-content">
-                <h3 className="featured-project-title">UI/UX Design</h3>
-                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
-                <button className="featured-project-btn">View Project</button>
+            <motion.div 
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Corporate Office Tower" />
+                <div className="project-category">Commercial</div>
               </div>
-            </div>
+              <div className="project-content">
+                <h3 className="project-title">Corporate Office Tower</h3>
+                <p className="project-description">
+                  A 25-story modern office building with cutting-edge technology infrastructure and sustainable building practices in the heart of downtown.
+                </p>
+                <div className="project-details">
+                  <span className="project-detail">25 Floors</span>
+                  <span className="project-detail">2022</span>
+                  <span className="project-detail">Smart Building</span>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Project Card 3 */}
-            <div className="featured-project-card">
-              <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80" alt="Development" className="featured-project-image" />
-              <div className="featured-project-content">
-                <h3 className="featured-project-title">Development</h3>
-                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
-                <button className="featured-project-btn">View Project</button>
+            <motion.div 
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Sustainable Housing Development" />
+                <div className="project-category">Sustainable</div>
               </div>
-            </div>
+              <div className="project-content">
+                <h3 className="project-title">Eco-Friendly Housing Development</h3>
+                <p className="project-description">
+                  An innovative green housing project featuring solar panels, rainwater harvesting, and sustainable materials for environmentally conscious living.
+                </p>
+                <div className="project-details">
+                  <span className="project-detail">75 Homes</span>
+                  <span className="project-detail">2023</span>
+                  <span className="project-detail">Net Zero</span>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Project Card 4 */}
-            <div className="featured-project-card">
-              <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80" alt="Marketing" className="featured-project-image" />
-              <div className="featured-project-content">
-                <h3 className="featured-project-title">Marketing</h3>
-                <p className="featured-project-description">Logo & Visual Identity · Brand Guidelines & Toolkits · Packaging Design · Print & Consumer Collaterals · Creative Direction</p>
-                <button className="featured-project-btn">View Project</button>
+            <motion.div 
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=800&q=80" alt="Industrial Warehouse Complex" />
+                <div className="project-category">Industrial</div>
               </div>
-            </div>
+              <div className="project-content">
+                <h3 className="project-title">Modern Warehouse Complex</h3>
+                <p className="project-description">
+                  State-of-the-art logistics and distribution center with automated systems, efficient loading docks, and advanced security features.
+                </p>
+                <div className="project-details">
+                  <span className="project-detail">500K Sq Ft</span>
+                  <span className="project-detail">2022</span>
+                  <span className="project-detail">Automated</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Corporate Office Tower" />
+                <div className="project-category">Commercial</div>
+              </div>
+              <div className="project-content">
+                <h3 className="project-title">Corporate Office Tower</h3>
+                <p className="project-description">
+                  A 25-story modern office building with cutting-edge technology infrastructure and sustainable building practices in the heart of downtown.
+                </p>
+                <div className="project-details">
+                  <span className="project-detail">25 Floors</span>
+                  <span className="project-detail">2022</span>
+                  <span className="project-detail">Smart Building</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="project-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="project-image">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Luxury Residential Complex" />
+                <div className="project-category">Residential</div>
+              </div>
+              <div className="project-content">
+                <h3 className="project-title">Luxury Residential Complex</h3>
+                <p className="project-description">
+                  A modern 50-unit residential complex featuring sustainable design, energy-efficient systems, and premium amenities for contemporary living.
+                </p>
+                <div className="project-details">
+                  <span className="project-detail">150 Units</span>
+                  <span className="project-detail">2023</span>
+                  <span className="project-detail">LEED Certified</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
-          <div className="featured-projects-footer">
-            <button className="featured-view-all-btn">View all</button>
-          </div>
+
+          
+          
+          <motion.div 
+            className="projects-footer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+                              <motion.a 
+                    href="#projects" 
+                    className="btn btn-primary"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View All Projects
+                  </motion.a>
+          </motion.div>
         </div>
       </section>
 
@@ -822,7 +995,6 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
             >
               <div className="team-member-avatar">
                 <div className="avatar-placeholder">
@@ -870,7 +1042,6 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
             >
               <div className="team-member-avatar">
                 <div className="avatar-placeholder">
@@ -918,7 +1089,6 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
             >
               <div className="team-member-avatar">
                 <div className="avatar-placeholder">
@@ -966,7 +1136,6 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
             >
               <div className="team-member-avatar">
                 <div className="avatar-placeholder">
@@ -1014,7 +1183,6 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
             >
               <div className="team-member-avatar">
                 <div className="avatar-placeholder">
@@ -1062,7 +1230,6 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
             >
               <div className="team-member-avatar">
                 <div className="avatar-placeholder">
@@ -1104,33 +1271,147 @@ const App = () => {
             </motion.div>
           </div>
 
-          {/* Team Stats */}
-          <motion.div 
-            className="team-stats"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <div className="team-stat-item">
-              <div className="team-stat-number">50+</div>
-              <div className="team-stat-label">Team Members</div>
-            </div>
-            <div className="team-stat-item">
-              <div className="team-stat-number">15+</div>
-              <div className="team-stat-label">Years Average Experience</div>
-            </div>
-            <div className="team-stat-item">
-              <div className="team-stat-number">100%</div>
-              <div className="team-stat-label">Licensed Professionals</div>
-            </div>
-            <div className="team-stat-item">
-              <div className="team-stat-number">24/7</div>
-              <div className="team-stat-label">Support Available</div>
-            </div>
-          </motion.div>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer id="contact" className="site-footer-main">
+        <div className="site-footer-content">
+          <div className="container">
+            {/* Footer Top */}
+            <motion.div 
+              className="site-footer-top"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="site-footer-grid">
+                {/* Company Info */}
+                <motion.div 
+                  className="site-footer-section company-info"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="site-footer-logo">
+                    <img src={logoImage} alt="CA Associates Logo" className="footer-logo-img" />
+                    <div className="footer-logo-text">
+                      <h3>CA ASSOCIATES</h3>
+                      <span>Construction Excellence</span>
+                    </div>
+                  </div>
+                  <p className="site-footer-description">
+                    Building dreams into reality with over 38 years of construction excellence. 
+                    From residential homes to commercial complexes, we deliver quality that stands the test of time.
+                  </p>
+                  <div className="site-footer-social">
+                    <a href="#" className="site-footer-social-link">
+                      <Facebook size={20} />
+                    </a>
+                    <a href="#" className="site-footer-social-link">
+                      <Twitter size={20} />
+                    </a>
+                    <a href="#" className="site-footer-social-link">
+                      <Linkedin size={20} />
+                    </a>
+                    <a href="#" className="site-footer-social-link">
+                      <Instagram size={20} />
+                    </a>
+                    <a href="#" className="site-footer-social-link">
+                      <Youtube size={20} />
+                    </a>
+                  </div>
+                </motion.div>
+
+
+
+                {/* Contact Info */}
+                <motion.div 
+                  className="site-footer-section contact-info"
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <h4 className="site-footer-title">Contact Information</h4>
+                  <div className="site-footer-contact">
+                    <div className="site-footer-contact-item">
+                      <MapPin size={18} className="contact-icon" />
+                      <div className="contact-details">
+                        <span className="contact-label">Address</span>
+                        <span className="contact-value">123 Construction Ave, Building City, BC 12345</span>
+                      </div>
+                    </div>
+                    <div className="site-footer-contact-item">
+                      <Phone size={18} className="contact-icon" />
+                      <div className="contact-details">
+                        <span className="contact-label">Phone</span>
+                        <span className="contact-value">+1 (555) 123-4567</span>
+                      </div>
+                    </div>
+                    <div className="site-footer-contact-item">
+                      <Mail size={18} className="contact-icon" />
+                      <div className="contact-details">
+                        <span className="contact-label">Email</span>
+                        <span className="contact-value">info@caassociates.com</span>
+                      </div>
+                    </div>
+                    <div className="site-footer-contact-item">
+                      <Clock size={18} className="contact-icon" />
+                      <div className="contact-details">
+                        <span className="contact-label">Hours</span>
+                        <span className="contact-value">Mon - Fri: 8:00 AM - 6:00 PM</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+
+
+            {/* Footer Bottom */}
+            <motion.div 
+              className="site-footer-bottom"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="footer-bottom-content">
+                <div className="footer-bottom-left">
+                  <p>&copy; 2024 CA Associates. All rights reserved.</p>
+                  <div className="footer-legal-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#cookies">Cookie Policy</a>
+                  </div>
+                </div>
+                <div className="footer-bottom-right">
+                  <div className="footer-certifications">
+                    <span className="certification-badge">LEED Certified</span>
+                    <span className="certification-badge">Licensed & Bonded</span>
+                    <span className="certification-badge">ISO 9001</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Back to Top Button */}
+        <button 
+          className="site-footer-back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <ArrowUp size={20} />
+        </button>
+
+        {/* Footer Background Pattern */}
+        <div className="site-footer-pattern"></div>
+      </footer>
     </div>
   );
 };
