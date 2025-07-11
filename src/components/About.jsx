@@ -91,7 +91,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              21+ years on the market
+              Proven Excellence in Construction
             </motion.h2>
             <motion.div
               className="about-text"
@@ -101,26 +101,21 @@ const About = () => {
               viewport={{ once: true }}
             >
               <p>
-                CA Associates is a leading construction company with over two
-                decades of experience in delivering exceptional construction
-                services.
+                With over a decade of proven experience, CI Associates, led by Mr. CI Salam, delivers comprehensive construction solutions across the industrial, commercial, and civil sectors.
               </p>
+              
               <p>
-                We specialize in residential, commercial, and industrial
-                projects with a commitment to quality and customer
-                satisfaction.
+                <strong>Our core capabilities include:</strong>
               </p>
-
-              <br></br>
+              <ul className="capabilities-list">
+                <li>Structural steel works</li>
+                <li>Large-scale civil construction</li>
+                <li>Utility and infrastructure development</li>
+                <li>A wide range of interior and finishing services</li>
+              </ul>
+              
               <p>
-                We specialize in residential, commercial, and industrial
-                projects with a commitment to quality and customer
-                satisfaction.
-              </p>
-              <p>
-                CA Associates is a leading construction company with over two
-                decades of experience in delivering exceptional construction
-                services.
+                Operating across Bangalore and Kochi, we combine technical expertise, skilled execution, and a commitment to quality to deliver projects that stand the test of time.
               </p>
             </motion.div>
           </motion.div>
@@ -134,16 +129,16 @@ const About = () => {
           >
             <div className="stats-partition"></div>
             <StatItem
-              number={38}
+              number={10}
               label="Years of Excellence"
               suffix="+"
-              startValue={25}
+              startValue={5}
             />
             <StatItem
-              number={300}
+              number={200}
               label="Projects Completed"
               suffix="+"
-              startValue={150}
+              startValue={100}
             />
             <StatItem
               number={180}

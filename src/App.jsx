@@ -4,8 +4,10 @@ import "./App.css";
 import SplashScreen from "./SplashScreen";
 import Header from "./components/Header";
 import Carousel from "./components/Carousel";
+import Introduction from "./components/Introduction";
 import About from "./components/About";
 import Services from "./components/Services";
+import Clients from "./components/Clients";
 import Projects from "./components/Projects";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
@@ -123,9 +125,13 @@ const App = () => {
       
       <Carousel />
       
+      <Introduction />
+      
       <About />
       
       <Services isScrolling={isScrolling} />
+      
+      <Clients />
       
       <Projects />
       

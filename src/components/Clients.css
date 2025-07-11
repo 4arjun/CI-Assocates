@@ -1,0 +1,357 @@
+/* Clients Section Styles */
+
+.clients-section {
+  background: var(--white);
+  position: relative;
+  border-top: 1px solid var(--gray-200);
+}
+
+.container-clients {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  box-sizing: border-box;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.clients-section-header {
+  text-align: center;
+  margin-bottom: var(--space-5xl);
+  max-width: 900px;
+  margin: 0 auto var(--space-5xl) auto;
+  padding: 0 var(--space-lg);
+}
+
+.clients-section-subtitle {
+  color: var(--accent-gold);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.clients-section-title {
+  font-size: clamp(1.875rem, 4vw, var(--font-size-5xl));
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: var(--space-xl);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.clients-section-description {
+  font-size: clamp(1rem, 2vw, var(--font-size-lg));
+  line-height: 1.8;
+  color: var(--gray-600);
+  margin-top: var(--space-lg);
+  font-weight: 400;
+}
+
+.clients-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-5xl);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--space-5xl);
+}
+
+.clients-portfolio-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.clients-portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dark));
+}
+
+.clients-portfolio-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-gold-light);
+  transform: translateY(-5px);
+}
+
+.clients-portfolio-logo {
+  margin-bottom: var(--space-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clients-logo-placeholder {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-gold));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--white);
+}
+
+.clients-portfolio-info {
+  text-align: center;
+}
+
+.clients-company-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+}
+
+.clients-company-sector {
+  font-size: var(--font-size-sm);
+  color: var(--accent-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--space-sm);
+}
+
+.clients-project-type {
+  font-size: var(--font-size-base);
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Clients CTA Section */
+.clients-section-cta {
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+  padding: var(--space-4xl) var(--space-2xl);
+  border-radius: var(--radius-2xl);
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--accent-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.clients-section-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.05));
+  pointer-events: none;
+}
+
+.clients-cta-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+.clients-cta-description {
+  font-size: var(--font-size-lg);
+  color: var(--gray-300);
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.clients-cta-button {
+  margin-top: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .clients-portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .clients-portfolio-card {
+    padding: var(--space-xl);
+  }
+  
+  .clients-logo-placeholder {
+    width: 4rem;
+    height: 4rem;
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 991px) {
+  .clients-section-header {
+    margin-bottom: var(--space-3xl);
+    padding: 0 var(--space-md);
+  }
+  
+  .clients-portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .clients-portfolio-card {
+    padding: var(--space-lg);
+  }
+  
+  .clients-company-name {
+    font-size: var(--font-size-lg);
+  }
+  
+  .clients-section-cta {
+    padding: var(--space-2xl) var(--space-xl);
+  }
+  
+  .clients-cta-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .clients-cta-description {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .container-clients {
+    padding: 0 var(--space-md);
+  }
+  
+  .clients-section-header {
+    margin-bottom: var(--space-2xl);
+    padding: 0 var(--space-sm);
+  }
+  
+  .clients-portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .clients-portfolio-card {
+    padding: var(--space-md);
+  }
+  
+  .clients-portfolio-logo {
+    margin-bottom: var(--space-md);
+  }
+  
+  .clients-logo-placeholder {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: var(--font-size-base);
+  }
+  
+  .clients-company-name {
+    font-size: var(--font-size-base);
+  }
+  
+  .clients-company-sector {
+    font-size: var(--font-size-xs);
+  }
+  
+  .clients-project-type {
+    font-size: var(--font-size-sm);
+  }
+  
+  .clients-section-cta {
+    padding: var(--space-xl) var(--space-lg);
+  }
+  
+  .clients-cta-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .clients-cta-description {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .container-clients {
+    padding: 0 var(--space-sm);
+  }
+  
+  .clients-section-header {
+    padding: 0 var(--space-xs);
+  }
+  
+  .clients-portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
+  
+  .clients-portfolio-card {
+    padding: var(--space-sm);
+  }
+  
+  .clients-portfolio-logo {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .clients-logo-placeholder {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--font-size-sm);
+    border-width: 2px;
+  }
+  
+  .clients-company-name {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .clients-company-sector {
+    font-size: 0.65rem;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .clients-project-type {
+    font-size: var(--font-size-xs);
+  }
+  
+  .clients-section-cta {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .clients-cta-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .clients-cta-description {
+    font-size: var(--font-size-xs);
+  }
+} 

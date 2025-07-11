@@ -31,6 +31,42 @@
   font-weight: 400;
 }
 
+.capabilities-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0;
+}
+
+.capabilities-list li {
+  position: relative;
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
+  color: var(--gray-600);
+  font-size: clamp(1rem, 2vw, var(--font-size-lg));
+  line-height: 1.6;
+  border-left: 2px solid var(--accent-gold);
+  margin-bottom: var(--space-xs);
+  padding-left: var(--space-md);
+}
+
+.capabilities-list li::before {
+  content: '•';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-gold);
+  font-weight: bold;
+  font-size: 1.2em;
+  background: var(--white);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
 /* About Stats Section */
 .about-stats {
   display: grid;

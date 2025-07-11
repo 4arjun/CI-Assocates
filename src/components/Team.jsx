@@ -30,7 +30,7 @@ const Team = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Meet Our Expert Team
+            Leadership & Expertise
           </motion.h2>
           <motion.p
             className="team-description"
@@ -39,14 +39,13 @@ const Team = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Our dedicated professionals bring decades of experience and
-            expertise to every project, ensuring exceptional quality and
-            innovative solutions for all your construction needs.
+            Meet the dedicated professionals who drive CI Associates' success, bringing specialized expertise 
+            in engineering, finance, operations, and project management to deliver exceptional construction solutions.
           </motion.p>
         </motion.div>
 
         <div className="team-grid">
-          {/* Team Member 1 */}
+          {/* C. I. Salam - Managing Partner */}
           <motion.div
             className="team-member-card"
             initial={{ opacity: 0, y: 50 }}
@@ -56,7 +55,7 @@ const Team = () => {
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-initials">JD</span>
+                <span className="avatar-initials">CS</span>
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
@@ -80,22 +79,16 @@ const Team = () => {
               </div>
             </div>
             <div className="team-member-info">
-              <h3 className="team-member-name">John Davis</h3>
-              <p className="team-member-role">Project Manager</p>
+              <h3 className="team-member-name">C. I. Salam</h3>
+              <p className="team-member-role">Managing Partner</p>
               <p className="team-member-description">
-                Over 15 years of experience in managing large-scale
-                construction projects with expertise in residential and
-                commercial developments.
+                Visionary leader and founder, overseeing strategic direction and overall operations of CI Associates.
               </p>
-              <div className="team-member-skills">
-                <span className="skill-tag">Project Management</span>
-                <span className="skill-tag">Team Leadership</span>
-                <span className="skill-tag">Quality Control</span>
-              </div>
+        
             </div>
           </motion.div>
 
-          {/* Team Member 2 */}
+          {/* Shaji Kumar R. - COO */}
           <motion.div
             className="team-member-card"
             initial={{ opacity: 0, y: 50 }}
@@ -105,7 +98,7 @@ const Team = () => {
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-initials">SW</span>
+                <span className="avatar-initials">SK</span>
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
@@ -129,22 +122,15 @@ const Team = () => {
               </div>
             </div>
             <div className="team-member-info">
-              <h3 className="team-member-name">Sarah Wilson</h3>
-              <p className="team-member-role">Lead Architect</p>
+              <h3 className="team-member-name">Shaji Kumar R.</h3>
+              <p className="team-member-role">Chief Operating Officer (COO)</p>
               <p className="team-member-description">
-                Award-winning architect specializing in sustainable design and
-                modern construction techniques with 12+ years of industry
-                experience.
+                Senior executive (DME) responsible for day-to-day operations and efficient project execution.
               </p>
-              <div className="team-member-skills">
-                <span className="skill-tag">Architectural Design</span>
-                <span className="skill-tag">Sustainable Building</span>
-                <span className="skill-tag">3D Modeling</span>
-              </div>
             </div>
           </motion.div>
 
-          {/* Team Member 3 */}
+          {/* Abhijith Babu - Senior Manager (Engineering) */}
           <motion.div
             className="team-member-card"
             initial={{ opacity: 0, y: 50 }}
@@ -154,7 +140,7 @@ const Team = () => {
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-initials">MT</span>
+                <span className="avatar-initials">AB</span>
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
@@ -178,22 +164,15 @@ const Team = () => {
               </div>
             </div>
             <div className="team-member-info">
-              <h3 className="team-member-name">Michael Thompson</h3>
-              <p className="team-member-role">Construction Supervisor</p>
+              <h3 className="team-member-name">Abhijith Babu</h3>
+              <p className="team-member-role">Senior Manager (Engineering)</p>
               <p className="team-member-description">
-                Experienced construction supervisor ensuring safety standards
-                and quality execution with expertise in heavy machinery and
-                site management.
+                B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.
               </p>
-              <div className="team-member-skills">
-                <span className="skill-tag">Site Management</span>
-                <span className="skill-tag">Safety Compliance</span>
-                <span className="skill-tag">Quality Assurance</span>
-              </div>
             </div>
           </motion.div>
 
-          {/* Team Member 4 */}
+          {/* Milben David - Manager (Finance) */}
           <motion.div
             className="team-member-card"
             initial={{ opacity: 0, y: 50 }}
@@ -203,7 +182,7 @@ const Team = () => {
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-initials">ER</span>
+                <span className="avatar-initials">MD</span>
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
@@ -227,22 +206,15 @@ const Team = () => {
               </div>
             </div>
             <div className="team-member-info">
-              <h3 className="team-member-name">Emily Roberts</h3>
-              <p className="team-member-role">Interior Designer</p>
+              <h3 className="team-member-name">Milben David</h3>
+              <p className="team-member-role">Manager (Finance)</p>
               <p className="team-member-description">
-                Creative interior designer with a passion for transforming
-                spaces into functional and beautiful environments that exceed
-                client expectations.
+                Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.
               </p>
-              <div className="team-member-skills">
-                <span className="skill-tag">Interior Design</span>
-                <span className="skill-tag">Space Planning</span>
-                <span className="skill-tag">Color Theory</span>
-              </div>
             </div>
           </motion.div>
 
-          {/* Team Member 5 */}
+          {/* Manu Soman - Project Coordinator */}
           <motion.div
             className="team-member-card"
             initial={{ opacity: 0, y: 50 }}
@@ -252,7 +224,7 @@ const Team = () => {
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-initials">DL</span>
+                <span className="avatar-initials">MS</span>
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
@@ -276,22 +248,15 @@ const Team = () => {
               </div>
             </div>
             <div className="team-member-info">
-              <h3 className="team-member-name">David Lee</h3>
-              <p className="team-member-role">Structural Engineer</p>
+              <h3 className="team-member-name">Manu Soman</h3>
+              <p className="team-member-role">Project Coordinator</p>
               <p className="team-member-description">
-                Licensed structural engineer with expertise in analyzing and
-                designing safe, efficient structural systems for residential
-                and commercial buildings.
+                Oversees project workflows and team collaboration (M.Com background), ensuring seamless execution.
               </p>
-              <div className="team-member-skills">
-                <span className="skill-tag">Structural Analysis</span>
-                <span className="skill-tag">Building Codes</span>
-                <span className="skill-tag">CAD Design</span>
-              </div>
             </div>
           </motion.div>
 
-          {/* Team Member 6 */}
+          {/* Shaju Stephen - Manager (Admin) */}
           <motion.div
             className="team-member-card"
             initial={{ opacity: 0, y: 50 }}
@@ -301,7 +266,7 @@ const Team = () => {
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-initials">AG</span>
+                <span className="avatar-initials">SS</span>
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
@@ -325,18 +290,95 @@ const Team = () => {
               </div>
             </div>
             <div className="team-member-info">
-              <h3 className="team-member-name">Anna Garcia</h3>
-              <p className="team-member-role">Financial Coordinator</p>
+              <h3 className="team-member-name">Shaju Stephen</h3>
+              <p className="team-member-role">Manager (Admin)</p>
               <p className="team-member-description">
-                Expert financial coordinator managing project budgets, cost
-                estimation, and ensuring projects are delivered within
-                financial parameters.
+                Handles administrative management and supports coordination across departments.
               </p>
-              <div className="team-member-skills">
-                <span className="skill-tag">Budget Management</span>
-                <span className="skill-tag">Cost Analysis</span>
-                <span className="skill-tag">Financial Planning</span>
+            </div>
+          </motion.div>
+
+          {/* Rakesh - Civil Engineer */}
+          <motion.div
+            className="team-member-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="team-member-avatar">
+              <div className="avatar-placeholder">
+                <span className="avatar-initials">R</span>
               </div>
+              <div className="team-member-overlay">
+                <div className="social-links-team">
+                  <motion.a
+                    href="#"
+                    className="social-link"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Linkedin size={20} />
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    className="social-link"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Mail size={20} />
+                  </motion.a>
+                </div>
+              </div>
+            </div>
+            <div className="team-member-info">
+              <h3 className="team-member-name">Rakesh</h3>
+              <p className="team-member-role">Civil Engineer</p>
+              <p className="team-member-description">
+                On-site civil engineer contributing to structural design, planning, and site management.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Mohammed Asadullah M.S. - Team Member */}
+          <motion.div
+            className="team-member-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="team-member-avatar">
+              <div className="avatar-placeholder">
+                <span className="avatar-initials">MA</span>
+              </div>
+              <div className="team-member-overlay">
+                <div className="social-links-team">
+                  <motion.a
+                    href="#"
+                    className="social-link"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Linkedin size={20} />
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    className="social-link"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Mail size={20} />
+                  </motion.a>
+                </div>
+              </div>
+            </div>
+            <div className="team-member-info">
+              <h3 className="team-member-name">Mohammed Asadullah M.S.</h3>
+              <p className="team-member-role">Team Member</p>
+              <p className="team-member-description">
+                Team member contributing to project execution; role and specialization to be confirmed.
+              </p>
             </div>
           </motion.div>
         </div>

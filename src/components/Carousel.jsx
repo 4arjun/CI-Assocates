@@ -10,35 +10,35 @@ const Carousel = () => {
   const slides = [
     {
       id: 1,
-      title: "Professional Construction Services",
-      subtitle: "Building Excellence Since 1985",
+      title: "Engineering Spaces, Elevating Standards",
+      subtitle: "Delivering End-to-End Construction Excellence",
       description:
-        "Transform your vision into reality with our expert construction team. From residential homes to commercial complexes, we deliver quality that stands the test of time.",
+        "With over a decade of experience, CI Associates provides comprehensive solutions across industrial, commercial, and civil sectors—combining innovation, precision, and quality.",
       image:
         "https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-      buttonText: "Our Services",
-      buttonLink: "#services",
+      buttonText: "ABOUT US",
+      buttonLink: "#about",
     },
     {
       id: 2,
-      title: "Modern Architecture & Design",
-      subtitle: "Innovation Meets Craftsmanship",
+      title: "From Vision to Reality",
+      subtitle: "Civil, Steel, and Interior Experts",
       description:
-        "Experience cutting-edge architectural design combined with traditional craftsmanship. Our award-winning team creates spaces that inspire and endure.",
+        "Whether it’s massive RCC structures or precision interior finishes, our expertise spans the entire project lifecycle—from concept to completion.",
       image:
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-      buttonText: "View Portfolio",
+      buttonText: "PROJECTS",
       buttonLink: "#projects",
     },
     {
       id: 3,
-      title: "Sustainable Building Solutions",
-      subtitle: "Green Construction for Tomorrow",
+      title: "Trusted by Industry Leaders",
+      subtitle: " A Legacy of Impactful Projects",
       description:
-        "Leading the way in eco-friendly construction with sustainable materials and energy-efficient designs that protect our planet while saving you money.",
+        "From Kochi Refineries and Technopark to Embassy Properties, our work with top-tier clients reflects our commitment to building trust and delivering excellence.",
       image:
         "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-      buttonText: "Learn More",
+      buttonText: "CONTACT US",
       buttonLink: "#about",
     },
   ];
