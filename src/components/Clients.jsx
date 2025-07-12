@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./Clients.css";
 
 const Clients = () => {
@@ -31,86 +32,55 @@ const Clients = () => {
     
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  useEffect(() => {
+    AOS.init({ 
+      once: true, 
+      duration: 900, 
+      offset: 80, 
+      easing: "ease-out-cubic" 
+    });
+  }, []);
 
   return (
     <section id="clients" className="section clients-section">
       <div className="container-clients">
-        <motion.div
+        <div
           className="clients-section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
-          <motion.p
+          <p
             className="clients-section-subtitle"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             Our Clients
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             className="clients-section-title"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             Trusted by Leading Organizations
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="clients-section-description"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="600"
           >
             We have had the privilege of working with some of the most respected companies 
             across various industries, delivering exceptional construction solutions that meet 
             their unique requirements.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          className="clients-portfolio-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {clients.map((client) => (
-            <motion.div
+        <div className="clients-portfolio-grid">
+          {clients.map((client, index) => (
+            <div
               key={client.id}
               className="clients-portfolio-card"
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05, 
-                transition: { duration: 0.3 } 
-              }}
+              data-aos="fade-up"
+              data-aos-delay={100 + (index * 100)}
             >
               <div className="clients-portfolio-logo">
                 <div className="clients-logo-placeholder">
@@ -122,9 +92,9 @@ const Clients = () => {
                 <p className="clients-company-sector">{client.sector}</p>
                 <p className="clients-project-type">{client.project}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
      
       </div>

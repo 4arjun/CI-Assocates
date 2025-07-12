@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Facebook,
   Phone,
@@ -11,31 +11,37 @@ import {
   Linkedin,
   ArrowUp,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import logoImage from "../assets/aa.avif";
 import "./Footer.css";
 
 const Footer = () => {
+  useEffect(() => {
+    AOS.init({ 
+      once: true, 
+      duration: 900, 
+      offset: 80, 
+      easing: "ease-out-cubic" 
+    });
+  }, []);
+
   return (
     <footer id="contact" className="site-footer-main">
       <div className="site-footer-content">
         <div className="container">
           {/* Footer Top */}
-          <motion.div
+          <div
             className="site-footer-top"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <div className="site-footer-grid">
               {/* Company Info */}
-              <motion.div
+              <div
                 className="site-footer-section company-info"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
+                data-aos="fade-right"
+                data-aos-delay="100"
               >
                 <div className="site-footer-logo">
                   <img
@@ -71,15 +77,13 @@ const Footer = () => {
                     <Youtube size={20} />
                   </a>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Contact Info */}
-              <motion.div
+              <div
                 className="site-footer-section contact-info"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
+                data-aos="fade-left"
+                data-aos-delay="400"
               >
                 <h4 className="site-footer-title">Contact Information</h4>
                 <div className="site-footer-contact">
@@ -118,17 +122,15 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Footer Bottom */}
-          <motion.div
+          <div
             className="site-footer-bottom"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="500"
           >
             <div className="footer-bottom-content">
               <div className="footer-bottom-left">
@@ -149,7 +151,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

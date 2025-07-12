@@ -1,57 +1,57 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./Projects.css";
 
 const Projects = () => {
+  useEffect(() => {
+    AOS.init({ 
+      once: true, 
+      duration: 900, 
+      offset: 80, 
+      easing: "ease-out-cubic" 
+    });
+  }, []);
+
   return (
     <section id="projects" className="projects-section section">
       <div className="container">
-        <motion.div
+        <div
           className="projects-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
-          <motion.span
+          <span
             className="section-subtitle"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             Our Portfolio
-          </motion.span>
-          <motion.h2
+          </span>
+          <h2
             className="section-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             Featured Construction Projects
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="projects-description"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             Discover our portfolio of exceptional construction projects that
             showcase our commitment to quality, innovation, and architectural
             excellence across residential and commercial developments.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="projects-grid">
           {/* Project Card 1 */}
-          <motion.div
+          <div
             className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="100"
           >
             <div className="project-image">
               <img
@@ -73,15 +73,13 @@ const Projects = () => {
                 <span className="project-detail">LEED Certified</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Project Card 2 */}
-          <motion.div
+          <div
             className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <div className="project-image">
               <img
@@ -103,15 +101,13 @@ const Projects = () => {
                 <span className="project-detail">Smart Building</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Project Card 3 */}
-          <motion.div
+          <div
             className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             <div className="project-image">
               <img
@@ -135,15 +131,13 @@ const Projects = () => {
                 <span className="project-detail">Net Zero</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Project Card 4 */}
-          <motion.div
+          <div
             className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <div className="project-image">
               <img
@@ -165,14 +159,12 @@ const Projects = () => {
                 <span className="project-detail">Automated</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <div className="project-image">
               <img
@@ -194,14 +186,12 @@ const Projects = () => {
                 <span className="project-detail">Smart Building</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="100"
           >
             <div className="project-image">
               <img
@@ -223,25 +213,21 @@ const Projects = () => {
                 <span className="project-detail">LEED Certified</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
+        <div
           className="projects-footer"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: true }}
+          data-aos="fade-up"
+          data-aos-delay="500"
         >
-          <motion.a
+          <a
             href="#projects"
             className="btn btn-primary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             View All Projects
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./Carousel.css";
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const carouselRef = useRef(null);
 
   // Carousel data
   const slides = [
@@ -38,7 +43,7 @@ const Carousel = () => {
       image:
         "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       buttonText: "CONTACT US",
-      buttonLink: "#about",
+      buttonLink: "#contact",
     },
   ];
 
@@ -55,104 +60,153 @@ const Carousel = () => {
     setCurrentSlide(index);
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Touch handlers for mobile swipe
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
+  // Smooth scroll to section
+  const handleButtonClick = (e, link) => {
+    e.preventDefault();
+    const targetSection = document.querySelector(link);
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  useEffect(() => {
+    AOS.init({ 
+      once: true, 
+      duration: 900, 
+      offset: 80, 
+      easing: "ease-out-cubic" 
+    });
+  }, []);
+
   return (
     <section className="carousel-section">
       <div className="carousel-container">
-        <div className="carousel-wrapper">
+        <div 
+          className="carousel-wrapper"
+          ref={carouselRef}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {slides.map((slide, index) => (
-            <motion.div
+            <div
               key={slide.id}
               className={`carousel-slide ${
                 index === currentSlide ? "active" : ""
               }`}
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: index === currentSlide ? 1 : 0,
-                scale: index === currentSlide ? 1 : 1.1,
-              }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
               style={{
                 backgroundImage: `url(${slide.image})`,
               }}
             >
               <div className="carousel-overlay"></div>
               <div className="carousel-content">
-                <motion.span
+                <span
                   className="carousel-subtitle"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{
-                    opacity: index === currentSlide ? 1 : 0,
-                    y: index === currentSlide ? 0 : 30,
-                  }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  data-aos="fade-up"
+                  data-aos-delay="200"
                 >
                   {slide.subtitle}
-                </motion.span>
-                <motion.h1
+                </span>
+                <h1
                   className="carousel-title"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{
-                    opacity: index === currentSlide ? 1 : 0,
-                    y: index === currentSlide ? 0 : 50,
-                  }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+                  data-aos="fade-up"
+                  data-aos-delay="300"
                 >
                   {slide.title}
-                </motion.h1>
-                <motion.p
+                </h1>
+                <p
                   className="carousel-description"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{
-                    opacity: index === currentSlide ? 1 : 0,
-                    y: index === currentSlide ? 0 : 30,
-                  }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
+                  data-aos="fade-up"
+                  data-aos-delay="500"
                 >
                   {slide.description}
-                </motion.p>
-                <motion.a
+                </p>
+                <a
                   href={slide.buttonLink}
                   className="carousel-button"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: index === currentSlide ? 1 : 0,
-                    y: index === currentSlide ? 0 : 20,
-                  }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  data-aos="fade-up"
+                  data-aos-delay="700"
+                  onClick={(e) => handleButtonClick(e, slide.buttonLink)}
                 >
                   {slide.buttonText}
-                </motion.a>
+                </a>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
+
+        {/* Navigation Arrows - Desktop Only */}
+        <button
+          className="carousel-nav carousel-prev"
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
+          <ArrowLeft size={24} />
+        </button>
+        <button
+          className="carousel-nav carousel-next"
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
+          <ArrowRight size={24} />
+        </button>
 
         {/* Slide Indicators */}
         <div className="carousel-indicators">
           {slides.map((_, index) => (
-            <motion.button
+            <button
               key={index}
               className={`carousel-indicator ${
                 index === currentSlide ? "active" : ""
               }`}
               onClick={() => goToSlide(index)}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
             />
           ))}
         </div>
 
         {/* Progress Bar */}
         <div className="carousel-progress">
-          <motion.div
+          <div
             className="carousel-progress-bar"
-            initial={{ width: 0 }}
-            animate={{
+            style={{
               width: `${((currentSlide + 1) / slides.length) * 100}%`,
             }}
-            transition={{ duration: 0.3 }}
           />
         </div>
       </div>

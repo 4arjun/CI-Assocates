@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import "./App.css";
 import SplashScreen from "./SplashScreen";
 import Header from "./components/Header";
@@ -54,21 +53,17 @@ const StatItem = ({ number, label, suffix = "", startValue = 0 }) => {
   const [count, setIsInView] = useCountUp(number, 2000, 500, startValue);
 
   return (
-    <motion.div
+    <div
       className="stat-item"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      whileInView={() => setIsInView(true)}
-      onViewportLeave={() => setIsInView(false)}
-      viewport={{ once: false, amount: 0.3 }}
+      onMouseEnter={() => setIsInView(true)}
+      onMouseLeave={() => setIsInView(false)}
     >
       <span className="stat-number">
         {count.toLocaleString()}
         {suffix}
       </span>
       <span className="stat-label">{label}</span>
-    </motion.div>
+    </div>
   );
 };
 
@@ -130,7 +125,7 @@ const App = () => {
       <Services isScrolling={isScrolling} />
       <Clients />
       <Projects />
-      <Team />
+      {/* <Team /> */}
       <Footer />
     </div>
   );

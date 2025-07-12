@@ -1,56 +1,47 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./Services.css";
 
 const Services = ({ isScrolling }) => {
-  const hoverButton = {
-    whileHover: isScrolling ? {} : { scale: 1.05, y: -2 },
-    whileTap: { scale: 0.95 },
-  };
-
-  const hoverScale = {
-    whileHover: isScrolling ? {} : { scale: 1.02 },
-    transition: { duration: 0.3 },
-  };
+  useEffect(() => {
+    AOS.init({ 
+      once: true, 
+      duration: 900, 
+      offset: 80, 
+      easing: "ease-out-cubic" 
+    });
+  }, []);
 
   return (
     <section id="services" className="services section">
       <div className="container-service">
-        <motion.div
+        <div
           className="services-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
-          <motion.p
+          <p
             className="section-subtitle"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             What we offer?
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             className="section-title"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             Our Services
-          </motion.h2>
-        </motion.div>
+          </h2>
+        </div>
 
         <div className="services-grid">
-          <motion.div
+          <div
             className="service-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            {...hoverScale}
+            data-aos="fade-up"
+            data-aos-delay="100"
           >
             <div className="service-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,15 +55,12 @@ const Services = ({ isScrolling }) => {
               <li>Warehouse Buildings – Storage & Logistics</li>
               <li>Large-scale RCC Structures</li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="service-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            {...hoverScale}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <div className="service-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,15 +76,12 @@ const Services = ({ isScrolling }) => {
               <li>Site development and preparation</li>
               <li>Quality control and supervision</li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="service-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            {...hoverScale}
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             <div className="service-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,15 +96,12 @@ const Services = ({ isScrolling }) => {
               <li>UPVC Installations</li>
               <li>Complete Interior Works</li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="service-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            {...hoverScale}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <div className="service-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,15 +116,12 @@ const Services = ({ isScrolling }) => {
               <li>Floor Coating Solutions</li>
               <li>Specialized Industrial Coatings</li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="service-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
-            {...hoverScale}
+            data-aos="fade-up"
+            data-aos-delay="500"
           >
             <div className="service-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,30 +137,26 @@ const Services = ({ isScrolling }) => {
               <li>Texture & Decorative Finishes</li>
               <li>Self-Leveling Applications</li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="service-card cta-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-            {...hoverScale}
+            data-aos="fade-up"
+            data-aos-delay="600"
           >
             <div className="cta-content">
               <h3 className="cta-title">Ready to Start Your Project?</h3>
               <p className="cta-description">
                 Get a personalized quote for your construction needs
               </p>
-              <motion.a
+              <a
                 href="#contact"
                 className="btn btn-primary"
-                {...hoverButton}
               >
                 Get Quote
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

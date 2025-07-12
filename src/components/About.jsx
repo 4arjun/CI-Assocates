@@ -168,8 +168,8 @@ const AboutSection = () => {
     "A wide range of interior and finishing services"
   ];
   const stats = [
-    { number: "10+", label: "Years of Excellence" },
-    { number: "200+", label: "Projects Completed" },
+    { number: "25+", label: "Years of Excellence" },
+    { number: "150+", label: "Projects Completed" },
     { number: "180+", label: "Mn. Sq. Ft. Delivered" },
     { number: "170+", label: "Mn. Sq. Ft. Underway" }
   ];
@@ -221,10 +221,10 @@ const AboutIntro = () => {
     });
   }, []);
   return (
-    <>
+    <div id="about">
       <IntroductionSection />
       <AboutSection />
-    </>
+    </div>
   );
 };
 

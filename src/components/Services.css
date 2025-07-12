@@ -33,6 +33,7 @@
   border: 1px solid var(--gray-200);
   position: relative;
   overflow: hidden;
+  margin: 0 10px;
 }
 
 .service-card::before {

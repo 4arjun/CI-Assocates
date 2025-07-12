@@ -1,57 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Linkedin, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./Team.css";
 
 const Team = () => {
+  useEffect(() => {
+    AOS.init({ 
+      once: true, 
+      duration: 900, 
+      offset: 80, 
+      easing: "ease-out-cubic" 
+    });
+  }, []);
+
   return (
     <section id="team" className="team-section">
       <div className="container">
-        <motion.div
+        <div
           className="team-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
-          <motion.span
+          <span
             className="team-badge"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             Our Team
-          </motion.span>
-          <motion.h2
+          </span>
+          <h2
             className="team-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             Leadership & Expertise
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="team-description"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             Meet the dedicated professionals who drive CI Associates' success, bringing specialized expertise 
             in engineering, finance, operations, and project management to deliver exceptional construction solutions.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="team-grid">
           {/* C. I. Salam - Managing Partner */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="100"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -59,22 +59,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -86,15 +82,13 @@ const Team = () => {
               </p>
         
             </div>
-          </motion.div>
+          </div>
 
           {/* Shaji Kumar R. - COO */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -102,22 +96,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -128,15 +118,13 @@ const Team = () => {
                 Senior executive (DME) responsible for day-to-day operations and efficient project execution.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Abhijith Babu - Senior Manager (Engineering) */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -144,22 +132,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -170,15 +154,13 @@ const Team = () => {
                 B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Milben David - Manager (Finance) */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -186,22 +168,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -212,15 +190,13 @@ const Team = () => {
                 Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Manu Soman - Project Coordinator */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="500"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -228,22 +204,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -251,18 +223,16 @@ const Team = () => {
               <h3 className="team-member-name">Manu Soman</h3>
               <p className="team-member-role">Project Coordinator</p>
               <p className="team-member-description">
-                Oversees project workflows and team collaboration (M.Com background), ensuring seamless execution.
+                B.Tech (Civil) professional coordinating project timelines, resources, and client communications.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Shaju Stephen - Manager (Admin) */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="600"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -270,22 +240,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -296,15 +262,13 @@ const Team = () => {
                 Handles administrative management and supports coordination across departments.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Rakesh - Civil Engineer */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="700"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -312,22 +276,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -338,15 +298,13 @@ const Team = () => {
                 On-site civil engineer contributing to structural design, planning, and site management.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Mohammed Asadullah M.S. - Team Member */}
-          <motion.div
+          <div
             className="team-member-card"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-delay="800"
           >
             <div className="team-member-avatar">
               <div className="avatar-placeholder">
@@ -354,22 +312,18 @@ const Team = () => {
               </div>
               <div className="team-member-overlay">
                 <div className="social-links-team">
-                  <motion.a
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="#"
                     className="social-link"
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
                   >
                     <Mail size={20} />
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -380,7 +334,7 @@ const Team = () => {
                 Team member contributing to project execution; role and specialization to be confirmed.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
