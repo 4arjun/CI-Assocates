@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import "./Carousel.css";
 
@@ -24,7 +23,7 @@ const Carousel = () => {
       title: "From Vision to Reality",
       subtitle: "Civil, Steel, and Interior Experts",
       description:
-        "Whether it’s massive RCC structures or precision interior finishes, our expertise spans the entire project lifecycle—from concept to completion.",
+        "Whether it's massive RCC structures or precision interior finishes, our expertise spans the entire project lifecycle—from concept to completion.",
       image:
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       buttonText: "PROJECTS",
@@ -51,14 +50,6 @@ const Carousel = () => {
 
     return () => clearInterval(interval);
   }, [slides.length]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -137,24 +128,6 @@ const Carousel = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Navigation Arrows */}
-        <motion.button
-          className="carousel-nav carousel-prev"
-          onClick={prevSlide}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ArrowLeft size={24} />
-        </motion.button>
-        <motion.button
-          className="carousel-nav carousel-next"
-          onClick={nextSlide}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ArrowRight size={24} />
-        </motion.button>
 
         {/* Slide Indicators */}
         <div className="carousel-indicators">
