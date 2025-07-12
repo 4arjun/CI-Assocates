@@ -375,11 +375,11 @@
 
 @media (max-width: 480px) {
   .aboutintro-section {
-    padding: 0.5rem 0;
+    padding: 0rem 0;
   }
   .aboutintro-sectionwrapper {
     border-radius: 0.4rem;
-    margin: 0.5rem 0;
+    margin: 0rem 0;
   }
   .aboutintro-title {
     font-size: 1.1rem;
