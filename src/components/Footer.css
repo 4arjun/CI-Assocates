@@ -235,8 +235,8 @@
   right: var(--space-2xl);
   width: 60px;
   height: 60px;
-  background: var(--gradient-accent);
-  color: var(--primary-dark);
+  background: linear-gradient(135deg, #ec8b22, #B8935A);
+  color: black;
   border: none;
   border-radius: 50%;
   display: flex;
@@ -251,7 +251,7 @@
 }
 
 .site-footer-back-to-top:hover {
-  background: linear-gradient(135deg, var(--accent-gold-dark), var(--accent-gold));
+  background: linear-gradient(135deg, #e87a06, #ff9900);
 }
 
 /* Responsive styles */

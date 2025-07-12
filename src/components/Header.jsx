@@ -7,7 +7,8 @@ const Header = ({
   isScrolled, 
   isMobileMenuOpen, 
   setIsMobileMenuOpen, 
-  isScrolling 
+  isScrolling,
+  scrollY
 }) => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -22,12 +23,16 @@ const Header = ({
     whileTap: { scale: 0.95 },
   };
 
+  // Calculate navbar position based on scroll
+  const navbarOffset = Math.max(-80, -scrollY * 0.5); // Move up to -80px max, with 0.5x scroll sensitivity
+
   return (
     <motion.header
       className={`header ${isScrolled ? "scrolled" : ""}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      style={{
+        transform: `translateY(${navbarOffset}px)`,
+        willChange: "transform"
+      }}
     >
       {/* SVG Diagonal Partition */}
       <div className="nav-partition-svg">

@@ -77,18 +77,28 @@ const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Check if scrolled past threshold
+      setIsScrolled(currentScrollY > 50);
+      
+      // Track scroll position continuously
+      setScrollY(currentScrollY);
+      
       setIsScrolling(true);
       document.body.classList.add("scrolling");
+      
       clearTimeout(window.scrollTimeout);
       window.scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
         document.body.classList.remove("scrolling");
       }, 150);
     };
+    
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -113,6 +123,7 @@ const App = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isScrolling={isScrolling}
+        scrollY={scrollY}
       />
       <Carousel />
       <AboutIntro />
