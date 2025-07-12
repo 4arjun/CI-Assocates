@@ -135,7 +135,7 @@ const IntroductionSection = () => {
               with active operations in Bangalore and across South India.
             </p>
             <p className="aboutintro-description">
-              Led by <strong>Mr. CI Salam</strong>, we bring over a decade of hands-on experience in delivering 
+              Led by <strong>Mr. CI Salam</strong>, we bring over decades of hands-on experience in delivering 
               industrial, commercial, and civil projects — from large-scale structural works to precision 
               interior finishes.
             </p>
@@ -182,7 +182,7 @@ const AboutSection = () => {
           <h2 className="aboutintro-title">Proven Excellence in Construction</h2>
           <div className="aboutintro-about-text">
             <p>
-              With over a decade of proven experience, CI Associates, led by Mr. CI Salam, delivers comprehensive construction solutions across the industrial, commercial, and civil sectors.
+              With over decades of proven experience, CI Associates, led by Mr. CI Salam, delivers comprehensive construction solutions across the industrial, commercial, and civil sectors.
             </p>
             <p><strong>Our core capabilities include:</strong></p>
             <ul className="aboutintro-capabilities-list">

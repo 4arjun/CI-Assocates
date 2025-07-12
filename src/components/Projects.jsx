@@ -67,11 +67,6 @@ const Projects = () => {
                 design, energy-efficient systems, and premium amenities for
                 contemporary living.
               </p>
-              <div className="project-details">
-                <span className="project-detail">150 Units</span>
-                <span className="project-detail">2023</span>
-                <span className="project-detail">LEED Certified</span>
-              </div>
             </div>
           </div>
 
@@ -95,11 +90,6 @@ const Projects = () => {
                 infrastructure and sustainable building practices in the heart
                 of downtown.
               </p>
-              <div className="project-details">
-                <span className="project-detail">25 Floors</span>
-                <span className="project-detail">2022</span>
-                <span className="project-detail">Smart Building</span>
-              </div>
             </div>
           </div>
 
@@ -125,11 +115,6 @@ const Projects = () => {
                 rainwater harvesting, and sustainable materials for
                 environmentally conscious living.
               </p>
-              <div className="project-details">
-                <span className="project-detail">75 Homes</span>
-                <span className="project-detail">2023</span>
-                <span className="project-detail">Net Zero</span>
-              </div>
             </div>
           </div>
 
@@ -153,11 +138,6 @@ const Projects = () => {
                 automated systems, efficient loading docks, and advanced
                 security features.
               </p>
-              <div className="project-details">
-                <span className="project-detail">500K Sq Ft</span>
-                <span className="project-detail">2022</span>
-                <span className="project-detail">Automated</span>
-              </div>
             </div>
           </div>
 
@@ -180,11 +160,6 @@ const Projects = () => {
                 infrastructure and sustainable building practices in the heart
                 of downtown.
               </p>
-              <div className="project-details">
-                <span className="project-detail">25 Floors</span>
-                <span className="project-detail">2022</span>
-                <span className="project-detail">Smart Building</span>
-              </div>
             </div>
           </div>
 
@@ -207,11 +182,6 @@ const Projects = () => {
                 design, energy-efficient systems, and premium amenities for
                 contemporary living.
               </p>
-              <div className="project-details">
-                <span className="project-detail">150 Units</span>
-                <span className="project-detail">2023</span>
-                <span className="project-detail">LEED Certified</span>
-              </div>
             </div>
           </div>
         </div>

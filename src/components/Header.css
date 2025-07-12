@@ -104,6 +104,7 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
   min-width: 28px;
   min-height: 28px;
+  flex-shrink: 0;
 }
 
 .logo-icon img {
@@ -397,17 +398,22 @@
   }
 
   .partition-content {
-    padding-right: 40px;
+    padding: 0 20px;
+    padding-right: 30px;
   }
 
   .company-name {
-    font-size: 1rem;
-    max-width: 100px;
+    font-size: 0.9rem;
+    max-width: 90px;
   }
 
   .logo-icon {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo {
+    gap: 12px;
   }
 
   .header {
@@ -425,21 +431,26 @@
   }
 
   .nav-partition-svg {
-    width: 240px;
+    width: 220px;
   }
 
   .partition-content {
-    padding-right: 30px;
+    padding: 0 15px;
+    padding-right: 20px;
   }
 
   .company-name {
-    font-size: 0.9rem;
-    max-width: 80px;
+    font-size: 0.8rem;
+    max-width: 70px;
   }
 
   .logo-icon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .logo {
+    gap: 8px;
   }
 
   .nav-container {
@@ -453,21 +464,26 @@
 
 @media (max-width: 320px) {
   .nav-partition-svg {
-    width: 200px;
+    width: 180px;
   }
 
   .partition-content {
-    padding-right: 20px;
+    padding: 0 10px;
+    padding-right: 15px;
   }
 
   .company-name {
-    font-size: 0.8rem;
-    max-width: 70px;
+    font-size: 0.7rem;
+    max-width: 60px;
   }
 
   .logo-icon {
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo {
+    gap: 6px;
   }
 }
 
