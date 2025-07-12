@@ -4,8 +4,7 @@ import "./App.css";
 import SplashScreen from "./SplashScreen";
 import Header from "./components/Header";
 import Carousel from "./components/Carousel";
-import Introduction from "./components/Introduction";
-import About from "./components/About";
+import AboutIntro from "./components/About";
 import Services from "./components/Services";
 import Clients from "./components/Clients";
 import Projects from "./components/Projects";
@@ -79,22 +78,17 @@ const App = () => {
   const [showSplash, setShowSplash] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
 
-
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-
-      // Disable hover effects during scrolling
       setIsScrolling(true);
       document.body.classList.add("scrolling");
       clearTimeout(window.scrollTimeout);
       window.scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
         document.body.classList.remove("scrolling");
-      }, 150); // Re-enable hover effects 150ms after scrolling stops
+      }, 150);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -108,8 +102,6 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
-
   if (showSplash) {
     return <SplashScreen />;
   }
@@ -122,21 +114,12 @@ const App = () => {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isScrolling={isScrolling}
       />
-      
       <Carousel />
-      
-      <Introduction />
-      
-      <About />
-      
+      <AboutIntro />
       <Services isScrolling={isScrolling} />
-      
       <Clients />
-      
       <Projects />
-      
       <Team />
-      
       <Footer />
     </div>
   );
