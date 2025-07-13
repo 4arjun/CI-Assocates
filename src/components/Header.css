@@ -379,9 +379,6 @@
     display: flex;
   }
 
-  .header-container {
-    padding: 0 2rem;
-  }
 
   .company-name {
     font-size: 1rem;
@@ -412,7 +409,7 @@
   }
 
   .header-container {
-    padding: 0 0.75rem;
+    padding: 0 1.2rem;
   }
 }
 
@@ -436,7 +433,7 @@
   }
 
   .header-container {
-    padding: 0 0.5rem;
+    padding: 0 1.2rem;
   }
 }
 
