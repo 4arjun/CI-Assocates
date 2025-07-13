@@ -235,23 +235,23 @@
   right: var(--space-2xl);
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #ec8b22, #B8935A);
-  color: black;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #f3a406 100%);
+  color: #1a1a1a;
   border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--shadow-2xl);
   transition: all var(--transition-normal);
   z-index: 1000;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-footer-back-to-top:hover {
-  background: linear-gradient(135deg, #e87a06, #ff9900);
+  background: linear-gradient(135deg, #ff5722 0%, #e68900 50%, #ffb347 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.1);
 }
 
 /* Responsive styles */

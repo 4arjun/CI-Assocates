@@ -211,20 +211,22 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .carousel-indicator.active {
-  background: #D4A574;
-  border-color: #D4A574;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #f3a406 100%);
+  border-color: #f3a406;
   transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(243, 164, 6, 0.4);
 }
 
 .carousel-indicator:hover {
-  border-color: white;
+  border-color: #f7931e;
+  background: rgba(247, 147, 30, 0.3);
   transform: scale(1.1);
 }
 
