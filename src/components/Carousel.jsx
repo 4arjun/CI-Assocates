@@ -42,8 +42,8 @@ const Carousel = () => {
         "From Kochi Refineries and Technopark to Embassy Properties, our work with top-tier clients reflects our commitment to building trust and delivering excellence.",
       image:
         "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-      buttonText: "CONTACT US",
-      buttonLink: "#contact",
+      buttonText: "OUR SERVICES",
+      buttonLink: "#services",
     },
   ];
 
@@ -54,7 +54,7 @@ const Carousel = () => {
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [slides.length, currentSlide]); // Reset timer when currentSlide changes
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
