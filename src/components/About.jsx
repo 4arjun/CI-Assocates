@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import "./About.css";
 
 // Counting animation hook with in-view trigger
-function useCountUpInView(end, duration = 1200) {
+function useCountUpInView(end, duration = 100) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef();
@@ -81,7 +81,7 @@ const StatItem = ({ number, label, delay = 0 }) => {
   const match = String(number).match(/\d+/);
   const end = match ? parseInt(match[0], 10) : 0;
   const suffix = String(number).replace(/\d+/,'');
-  const [count, ref] = useCountUpInView(end, 1200);
+  const [count, ref] = useCountUpInView(end, 2000);
   return (
     <div className="aboutintro-card aboutintro-stat-card" data-aos="flip-left" data-aos-delay={delay}>
       <span className="aboutintro-stat-number" ref={ref}>{count}{suffix}</span>

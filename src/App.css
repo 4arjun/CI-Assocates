@@ -236,8 +236,6 @@
 .scrolling .service-card:hover,
 .scrolling .about-image:hover img,
 .scrolling .services-image:hover img,
-.scrolling .nav a:hover,
-.scrolling .mobile-menu-btn:hover,
 .scrolling .carousel-nav:hover,
 .scrolling .carousel-indicator:hover {
   transform: none !important;
@@ -248,7 +246,7 @@
 
 .scrolling .btn:hover::before,
 .scrolling .btn::before {
-  left: -100% !important;
+  display: none !important;
 }
 
 .scrolling .nav a:not(.btn):hover::after {

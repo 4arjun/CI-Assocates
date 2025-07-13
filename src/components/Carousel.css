@@ -111,11 +111,7 @@
   cursor: pointer;
 }
 
-.carousel-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(212, 165, 116, 0.6);
-  background: linear-gradient(135deg, #E5B885, #D4A574);
-}
+
 
 /* Navigation Arrows */
 .carousel-nav {

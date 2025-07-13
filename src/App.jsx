@@ -11,7 +11,7 @@ import Team from "./components/Team";
 import Footer from "./components/Footer";
 
 // Custom hook for counting animation
-const useCountUp = (end, duration = 2000, delay = 0, startValue = 0) => {
+const useCountUp = (end, duration = 2700, delay = 0, startValue = 0) => {
   const [count, setCount] = useState(startValue);
   const [isInView, setIsInView] = useState(false);
 
@@ -50,7 +50,7 @@ const useCountUp = (end, duration = 2000, delay = 0, startValue = 0) => {
 
 // Stat Item Component with counting animation
 const StatItem = ({ number, label, suffix = "", startValue = 0 }) => {
-  const [count, setIsInView] = useCountUp(number, 2000, 500, startValue);
+  const [count, setIsInView] = useCountUp(number, 2700, 700, startValue);
 
   return (
     <div
