@@ -228,17 +228,7 @@ const Services = ({ isScrolling }) => {
                   ))}
                 </ul>
               </div>
-              <button 
-                className="modal-cta"
-                onClick={() => {
-                  setSelectedService(null);
-                  document.querySelector('#contact').scrollIntoView({ 
-                    behavior: 'smooth' 
-                  });
-                }}
-              >
-                Get a Quote
-              </button>
+            
             </div>
           </div>
         </div>
