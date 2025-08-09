@@ -16,7 +16,7 @@ const Header = ({
     setAnimateIn(true);
     const timer = setTimeout(() => {
       setHasAnimatedIn(true);
-    }, 900); // match animation duration
+    }, 900); 
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,7 +28,21 @@ const Header = ({
     setIsMobileMenuOpen(false);
   };
 
-  // Calculate navbar position based on scroll
+  // Prevent hash in URL and perform smooth scroll
+  const handleNavClick = (event, targetId) => {
+    if (event) event.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    // Ensure menu closes on mobile
+    setIsMobileMenuOpen(false);
+    // Clean up any existing hash without reloading
+    if (window.location.hash) {
+      window.history.replaceState(null, "", " ");
+    }
+  };
+
   const navbarOffset = Math.max(-80, -scrollY * 1.5); // Move up to -80px max, with 1.5x scroll sensitivity
 
   return (
@@ -62,22 +76,22 @@ const Header = ({
 
         {/* Desktop Navigation */}
         <nav className="nav desktop-nav">
-          <a href="#about" onClick={closeMobileMenu}>
+          <a href="#about" onClick={(e) => handleNavClick(e, "about")}>
             About
           </a>
-          <a href="#services" onClick={closeMobileMenu}>
+          <a href="#services" onClick={(e) => handleNavClick(e, "services")}>
             Services
           </a>
-          <a href="#projects" onClick={closeMobileMenu}>
+          <a href="#projects" onClick={(e) => handleNavClick(e, "projects")}>
             Projects
           </a>
-          <a href="#team" onClick={closeMobileMenu}>
+          <a href="#team"  onClick={(e) => handleNavClick(e, "team")}>
             Team
           </a>
           <a
             href="#contact"
             className="btn btn-primary"
-            onClick={closeMobileMenu}
+            onClick={(e) => handleNavClick(e, "contact")}
           >
             Contact Us
           </a>
@@ -102,22 +116,22 @@ const Header = ({
           </button>
 
           <nav className="mobile-nav">
-            <a href="#about" onClick={closeMobileMenu}>
+            <a href="#about" onClick={(e) => handleNavClick(e, "about")}>
               About
             </a>
-            <a href="#services" onClick={closeMobileMenu}>
+            <a href="#services" onClick={(e) => handleNavClick(e, "services")}>
               Services
             </a>
-            <a href="#projects" onClick={closeMobileMenu}>
+            <a href="#projects" onClick={(e) => handleNavClick(e, "projects")}>
               Projects
             </a>
-            <a href="#team" onClick={closeMobileMenu}>
+            <a href="#team" onClick={(e) => handleNavClick(e, "team")}>
               Team
             </a>
             <a
               href="#contact"
               className="btn btn-primary"
-              onClick={closeMobileMenu}
+              onClick={(e) => handleNavClick(e, "contact")}
             >
               Contact Us
             </a>

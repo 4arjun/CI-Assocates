@@ -5,6 +5,7 @@ import "./Services.css";
 
 const Services = ({ isScrolling }) => {
   const [selectedService, setSelectedService] = useState(null);
+  const [isModalClosing, setIsModalClosing] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -168,10 +169,18 @@ const Services = ({ isScrolling }) => {
     },
   ];
 
+  const handleCloseModal = () => {
+    setIsModalClosing(true);
+    window.setTimeout(() => {
+      setSelectedService(null);
+      setIsModalClosing(false);
+    }, 300);
+  };
+
   return (
-    <section id="services" className="services section">
+    <section  className="services section">
       <div className="services-header" data-aos="fade-up" data-aos-delay="200">
-        <h2 className="section-title">Our Services</h2>
+        <h2 id="services" className="section-title">Our Services</h2>
       </div>
       <div className="container-service">
         <div className="services-grid">
@@ -205,11 +214,18 @@ const Services = ({ isScrolling }) => {
 
       {/* Service Details Modal */}
       {selectedService && (
-        <div className="modal-overlay" onClick={() => setSelectedService(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className={`modal-overlay ${isModalClosing ? "closing" : "open"}`} onClick={handleCloseModal}>
+          <div
+            className={`modal-content ${isModalClosing ? "closing" : "open"}`}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="service-modal-title"
+          >
             <button
               className="modal-close"
-              onClick={() => setSelectedService(null)}
+              onClick={handleCloseModal}
+              aria-label="Close dialog"
             >
               ×
             </button>
@@ -219,23 +235,23 @@ const Services = ({ isScrolling }) => {
                 alt={selectedService.title}
                 className="modal-image"
               />
-              <h3 className="modal-title">{selectedService.title}</h3>
+              <h3 id="service-modal-title" className="modal-title">{selectedService.title}</h3>
             </div>
             <div className="modal-body">
-              <div className="modal-description">
-                {selectedService.description
-                  .split("\n")
-                  .map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-              </div>
-              <div className="modal-features">
-                <h4>Key Features</h4>
-                <ul>
-                  {selectedService.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
+              <div className="modal-body-grid">
+                <div className="modal-col">
+                  <h4 className="modal-section-title">Overview</h4>
+                  <p className="modal-lead">{selectedService.brief}</p>
+                </div>
+                <div className="modal-col modal-features-col">
+                  <h4 className="modal-section-title">Key Features</h4>
+                  <ul className="modal-feature-list">
+                    {selectedService.features.map((feature, index) => (
+                      <li className="modal-feature-item" key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                 
+                </div>
               </div>
             </div>
           </div>
