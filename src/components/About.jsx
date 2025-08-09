@@ -83,7 +83,7 @@ const StatItem = ({ number, label, delay = 0 }) => {
   const suffix = String(number).replace(/\d+/,'');
   const [count, ref] = useCountUpInView(end, 2000);
   return (
-    <div className="aboutintro-card aboutintro-stat-card" data-aos="flip-left" data-aos-delay={delay}>
+    <div className="aboutintro-stat" data-aos="fade-up" data-aos-delay={delay}>
       <span className="aboutintro-stat-number" ref={ref}>{count}{suffix}</span>
       <span className="aboutintro-stat-label">{label}</span>
     </div>
@@ -115,27 +115,28 @@ const AboutSection = () => {
   ];
   return (
     <SectionWrapper className="aboutintro-about">
-      <div className="aboutintro-accentbar" />
       <div className="aboutintro-flexrow">
         <div className="aboutintro-col aboutintro-col-content aboutintro-bgaccent" data-aos="fade-right">
           <p className="aboutintro-subtitle">About</p>
           <h2 className="aboutintro-title">Proven Excellence in Construction</h2>
           <div className="aboutintro-about-text">
-            <p>
-              With over decades of proven experience, CI Associates, led by Mr. CI Salam, delivers comprehensive construction solutions across the industrial, commercial, and civil sectors.
-            </p>
-            <p><strong>Our core capabilities include:</strong></p>
+          <p>
+             <strong>CI Associates</strong>, led by <strong>Mr. CI Salam</strong>, is a Kochi-based construction and infrastructure firm with operations across South India. With decades of expertise, we deliver industrial, commercial, and civil projects, specializing in advanced structural works, large-scale fabrication, smart infrastructure, and premium interior finishes.
+          </p>
+
+
+            {/* <p><strong>Our core capabilities include:</strong></p>
             <ul className="aboutintro-capabilities-list">
               {capabilities.map((cap, i) => (
                 <li key={i}><IconSVG iconType="check" className="aboutintro-checkicon" />{cap}</li>
               ))}
-            </ul>
+            </ul> */}
            
           </div>
         </div>
         <div className="aboutintro-divider" />
         <div className="aboutintro-col aboutintro-col-cards" data-aos="fade-left">
-          <CardGrid className="aboutintro-stats-grid">
+          <CardGrid className="aboutintro-stats">
             {stats.map((stat, index) => (
               <StatItem
                 key={stat.label}

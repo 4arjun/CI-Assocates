@@ -1,7 +1,7 @@
 /* Footer styles */
 
 .site-footer-main {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+  background: var(--gradient-primary);
   position: relative;
   overflow: hidden;
 }

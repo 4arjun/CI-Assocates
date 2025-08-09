@@ -123,7 +123,7 @@ const App = () => {
       <Carousel />
       <AboutIntro />
       <Services isScrolling={isScrolling} />
-      <Clients />
+      {/* <Clients /> */}
       <Projects />
       <Team />
       <Footer />

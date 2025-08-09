@@ -2,7 +2,7 @@
 
 .services {
   position: relative;
-  background: var(--gradient-light);
+  background: transparent;
   padding: var(--space-5xl) 0;
 }
 
