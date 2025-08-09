@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import { Linkedin, Mail } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Team.css";
 
 const Team = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [membersPerPage, setMembersPerPage] = useState(3);
+
   useEffect(() => {
     AOS.init({ 
       once: true, 
@@ -12,327 +14,179 @@ const Team = () => {
       offset: 80, 
       easing: "ease-out-cubic" 
     });
+
+    // Function to determine members per page based on screen size
+    const updateMembersPerPage = () => {
+      if (window.innerWidth <= 480) {
+        setMembersPerPage(1); // Mobile: 1 card per row
+      } else if (window.innerWidth <= 768) {
+        setMembersPerPage(1); // Small tablet: 1 card per row
+      } else if (window.innerWidth <= 991) {
+        setMembersPerPage(2); // Tablet: 2 cards per row
+      } else {
+        setMembersPerPage(3); // Desktop: 3 cards per row
+      }
+    };
+
+    // Set initial value
+    updateMembersPerPage();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', updateMembersPerPage);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updateMembersPerPage);
   }, []);
 
+  const teamMembers = [
+    {
+      id: 1,
+      name: "C. I. Salam",
+      title: "Managing Partner",
+      initials: "CS",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "Visionary leader and founder, overseeing strategic direction and overall operations of CI Associates."
+    },
+    {
+      id: 2,
+      name: "Shaji Kumar R.",
+      title: "Chief Operating Officer (COO)",
+      initials: "SK",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "Senior executive (DME) responsible for day-to-day operations and efficient project execution."
+    },
+    {
+      id: 3,
+      name: "Abhijith Babu",
+      title: "Senior Manager (Engineering)",
+      initials: "AB",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "B.Tech (Civil) professional leading engineering operations with a focus on technical excellence."
+    },
+    {
+      id: 4,
+      name: "Milben David",
+      title: "Manager (Finance)",
+      initials: "MD",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance."
+    },
+    {
+      id: 5,
+      name: "Manu Soman",
+      title: "Project Coordinator",
+      initials: "MS",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "B.Tech (Civil) professional coordinating project timelines, resources, and client communications."
+    },
+    {
+      id: 6,
+      name: "Shaju Stephen",
+      title: "Manager (Admin)",
+      initials: "SS",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "Handles administrative management and supports coordination across departments."
+    },
+    {
+      id: 7,
+      name: "Rakesh",
+      title: "Civil Engineer",
+      initials: "R",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "On-site civil engineer contributing to structural design, planning, and site management."
+    },
+    {
+      id: 8,
+      name: "Mohammed Asadullah M.S.",
+      title: "Team Member",
+      initials: "MA",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description: "Team member contributing to project execution; role and specialization to be confirmed."
+    }
+  ];
+
+  const totalPages = Math.ceil(teamMembers.length / membersPerPage);
+  const currentMembers = teamMembers.slice(
+    currentPage * membersPerPage,
+    (currentPage + 1) * membersPerPage
+  );
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
   return (
-    <section id="team" className="team-section">
-      <div className="container">
-        <div
-          className="team-header"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <span
-            className="team-badge"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            Our Team
-          </span>
-          <h2
-            className="team-title"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            Leadership & Expertise
-          </h2>
-          <p
-            className="team-description"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            Meet the dedicated professionals who drive CI Associates' success, bringing specialized expertise 
-            in engineering, finance, operations, and project management to deliver exceptional construction solutions.
-          </p>
-        </div>
-
-        <div className="team-grid">
-          {/* C. I. Salam - Managing Partner */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">CS</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
+    <section id="team" className="board-directors-section">
+      <div className="board-directors-container">
+        <div className="board-directors-content">
+          {/* Left side - Text content */}
+          <div className="board-directors-text">
+            <div
+              className="board-directors-header"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <h2 className="board-directors-title">Our Team</h2>
+              <div className="board-directors-description-row">
+                <p className="board-directors-description">
+                  Meet the dedicated professionals who drive CI Associates' success, bringing specialized expertise 
+                  in engineering, finance, operations, and project management to deliver exceptional construction solutions.
+                </p>
+                <div className="board-directors-nav-buttons">
+                  <button 
+                    className="board-directors-nav-btn board-directors-prev-btn"
+                    onClick={prevPage}
+                    aria-label="Previous directors"
                   >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
+                    ‹
+                  </button>
+                  <button 
+                    className="board-directors-nav-btn board-directors-next-btn"
+                    onClick={nextPage}
+                    aria-label="Next directors"
                   >
-                    <Mail size={20} />
-                  </a>
+                    ›
+                  </button>
                 </div>
               </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">C. I. Salam</h3>
-              <p className="team-member-role">Managing Partner</p>
-              <p className="team-member-description">
-                Visionary leader and founder, overseeing strategic direction and overall operations of CI Associates.
-              </p>
-        
             </div>
           </div>
 
-          {/* Shaji Kumar R. - COO */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">SK</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
+          {/* Right side - Team cards */}
+          <div className="board-directors-cards-section">
+            <div className="board-directors-grid">
+              {currentMembers.map((member, index) => (
+                <div
+                  key={member.id}
+                  className="board-directors-card"
+                  data-aos="fade-up"
+                  data-aos-delay={100 * (index + 1)}
+                >
+                  <div className="board-directors-image">
+                    <img src={member.image} alt={member.name} />
+                  </div>
+                  <div className="board-directors-info">
+                    <h3 className="board-directors-name">{member.name}</h3>
+                    <p className="board-directors-title-text">{member.title}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Shaji Kumar R.</h3>
-              <p className="team-member-role">Chief Operating Officer (COO)</p>
-              <p className="team-member-description">
-                Senior executive (DME) responsible for day-to-day operations and efficient project execution.
-              </p>
-            </div>
-          </div>
 
-          {/* Abhijith Babu - Senior Manager (Engineering) */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">AB</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Abhijith Babu</h3>
-              <p className="team-member-role">Senior Manager (Engineering)</p>
-              <p className="team-member-description">
-                B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.
-              </p>
-            </div>
-          </div>
-
-          {/* Milben David - Manager (Finance) */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">MD</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Milben David</h3>
-              <p className="team-member-role">Manager (Finance)</p>
-              <p className="team-member-description">
-                Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.
-              </p>
-            </div>
-          </div>
-
-          {/* Manu Soman - Project Coordinator */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">MS</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Manu Soman</h3>
-              <p className="team-member-role">Project Coordinator</p>
-              <p className="team-member-description">
-                B.Tech (Civil) professional coordinating project timelines, resources, and client communications.
-              </p>
-            </div>
-          </div>
-
-          {/* Shaju Stephen - Manager (Admin) */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">SS</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Shaju Stephen</h3>
-              <p className="team-member-role">Manager (Admin)</p>
-              <p className="team-member-description">
-                Handles administrative management and supports coordination across departments.
-              </p>
-            </div>
-          </div>
-
-          {/* Rakesh - Civil Engineer */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="700"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">R</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Rakesh</h3>
-              <p className="team-member-role">Civil Engineer</p>
-              <p className="team-member-description">
-                On-site civil engineer contributing to structural design, planning, and site management.
-              </p>
-            </div>
-          </div>
-
-          {/* Mohammed Asadullah M.S. - Team Member */}
-          <div
-            className="team-member-card"
-            data-aos="fade-up"
-            data-aos-delay="800"
-          >
-            <div className="team-member-avatar">
-              <div className="avatar-placeholder">
-                <span className="avatar-initials">MA</span>
-              </div>
-              <div className="team-member-overlay">
-                <div className="social-links-team">
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="social-link"
-                  >
-                    <Mail size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="team-member-info">
-              <h3 className="team-member-name">Mohammed Asadullah M.S.</h3>
-              <p className="team-member-role">Team Member</p>
-              <p className="team-member-description">
-                Team member contributing to project execution; role and specialization to be confirmed.
-              </p>
+            {/* Pagination dots */}
+            <div className="board-directors-pagination">
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  className={`board-directors-dot ${index === currentPage ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(index)}
+                  aria-label={`Go to page ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>

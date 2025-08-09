@@ -102,7 +102,7 @@
 /* ===== SHARED UTILITY CLASSES ===== */
 .container {
   width: 100%;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
   box-sizing: border-box;
@@ -128,6 +128,11 @@
   padding: 6rem 0;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Ensure anchor targets are visible beneath fixed header */
+[id] {
+  scroll-margin-top: 96px;
 }
 
 @media (max-width: 768px) {
@@ -159,6 +164,17 @@
   margin-bottom: var(--space-xl);
   line-height: 1.2;
   letter-spacing: -0.5px;
+}
+
+/* Shared section description */
+.section-description {
+  font-size: var(--font-size-lg);
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin-top: var(--space-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== SHARED BUTTON STYLES ===== */
@@ -223,10 +239,7 @@
 }
 
 /* ===== SCROLLING PERFORMANCE OPTIMIZATION ===== */
-.scrolling * {
-  pointer-events: none !important;
-}
-
+/* Keep hover animations tame while scrolling without disabling interactions */
 .scrolling .btn:hover,
 .scrolling .btn:hover::before,
 .scrolling .btn-primary:hover,

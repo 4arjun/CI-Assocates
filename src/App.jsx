@@ -125,7 +125,7 @@ const App = () => {
       <Services isScrolling={isScrolling} />
       <Clients />
       <Projects />
-      {/* <Team /> */}
+      <Team />
       <Footer />
     </div>
   );
