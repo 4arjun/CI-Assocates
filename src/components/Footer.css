@@ -25,10 +25,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 80% 20%, rgba(184, 219, 217, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(212, 165, 116, 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(184, 219, 217, 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 50%
+    );
   pointer-events: none;
   z-index: 1;
 }
@@ -260,7 +271,7 @@
     grid-template-columns: 1.5fr 1fr;
     gap: var(--space-3xl);
   }
-  
+
   .company-info {
     padding-right: var(--space-lg);
   }
@@ -272,21 +283,21 @@
     gap: var(--space-4xl);
     text-align: center;
   }
-  
+
   .company-info {
     padding-right: 0;
     margin-bottom: var(--space-xl);
   }
-  
+
   .site-footer-description {
     max-width: 600px;
     margin: 0 auto var(--space-2xl);
   }
-  
+
   .site-footer-social {
     justify-content: center;
   }
-  
+
   .site-footer-contact-item {
     justify-content: center;
     text-align: left;
@@ -299,38 +310,38 @@
   .site-footer-top {
     padding: var(--space-4xl) 0 var(--space-3xl);
   }
-  
+
   .site-footer-main .container {
     padding: 0 var(--space-md);
   }
-  
+
   .site-footer-grid {
     gap: var(--space-3xl);
   }
-  
+
   .site-footer-logo {
     justify-content: center;
   }
-  
+
   .site-footer-title {
     font-size: var(--font-size-lg);
   }
-  
+
   .footer-bottom-content {
     flex-direction: column;
     text-align: center;
     gap: var(--space-lg);
   }
-  
+
   .footer-legal-links {
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .footer-certifications {
     justify-content: center;
   }
-  
+
   .site-footer-back-to-top {
     width: 50px;
     height: 50px;
@@ -343,90 +354,90 @@
   .site-footer-top {
     padding: var(--space-3xl) 0 var(--space-2xl);
   }
-  
+
   .site-footer-main .container {
     padding: 0 var(--space-sm);
   }
-  
+
   .site-footer-grid {
     gap: var(--space-2xl);
   }
-  
+
   .site-footer-logo {
     flex-direction: column;
     gap: var(--space-md);
   }
-  
+
   .footer-logo-img {
     width: 50px;
     height: 50px;
   }
-  
+
   .footer-logo-text h3 {
     font-size: var(--font-size-xl);
     text-align: center;
   }
-  
+
   .footer-logo-text span {
     text-align: center;
     display: block;
   }
-  
+
   .site-footer-description {
     font-size: var(--font-size-sm);
     max-width: 100%;
   }
-  
+
   .site-footer-social-link {
     width: 45px;
     height: 45px;
   }
-  
+
   .site-footer-contact {
     gap: var(--space-md);
   }
-  
+
   .site-footer-contact-item {
     max-width: 280px;
   }
-  
+
   .contact-details {
     gap: var(--space-xs);
   }
-  
+
   .contact-label {
     font-size: var(--font-size-xs);
   }
-  
+
   .contact-value {
     font-size: var(--font-size-sm);
   }
-  
+
   .footer-bottom-content {
     gap: var(--space-md);
     padding: 0 var(--space-sm);
   }
-  
+
   .footer-legal-links {
     flex-direction: column;
     gap: var(--space-sm);
   }
-  
+
   .footer-certifications {
     flex-direction: column;
     gap: var(--space-sm);
     align-items: center;
   }
-  
+
   .certification-badge {
     font-size: var(--font-size-xs);
     padding: var(--space-xs) var(--space-sm);
   }
-  
+
   .site-footer-back-to-top {
     width: 45px;
     height: 45px;
     bottom: var(--space-md);
     right: var(--space-md);
   }
-} 
+}

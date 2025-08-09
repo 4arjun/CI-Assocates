@@ -43,29 +43,69 @@ const IconSVG = ({ iconType, className = "" }) => {
   const icons = {
     industrial: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 21H21M5 21V7L12 2L19 7V21M9 21V12H15V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path
+          d="M3 21H21M5 21V7L12 2L19 7V21M9 21V12H15V21"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     commercial: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 21H21M6 8L10 12L14 8L18 12M6 21V8M18 21V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path
+          d="M3 21H21M6 8L10 12L14 8L18 12M6 21V8M18 21V12"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     civil: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 6L21 6M8 12L21 12M8 18L21 18M3 6L4 6M3 12L4 12M3 18L4 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path
+          d="M8 6L21 6M8 12L21 12M8 18L21 18M3 6L4 6M3 12L4 12M3 18L4 18"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     interior: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 3L2 12H5V20H9V14H15V20H19V12H22L12 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path
+          d="M12 3L2 12H5V20H9V14H15V20H19V12H22L12 3Z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     check: (
-      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10.5L9 14.5L15 7.5" stroke="#d4a574" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-    )
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 10.5L9 14.5L15 7.5"
+          stroke="#d4a574"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   };
-  return <span className={`aboutintro-icon ${className}`}>{icons[iconType]}</span>;
+  return (
+    <span className={`aboutintro-icon ${className}`}>{icons[iconType]}</span>
+  );
 };
 
 const HighlightItem = ({ icon, title, description, delay = 0 }) => (
@@ -80,11 +120,14 @@ const StatItem = ({ number, label, delay = 0 }) => {
   // Extract numeric part for animation
   const match = String(number).match(/\d+/);
   const end = match ? parseInt(match[0], 10) : 0;
-  const suffix = String(number).replace(/\d+/,'');
+  const suffix = String(number).replace(/\d+/, "");
   const [count, ref] = useCountUpInView(end, 2000);
   return (
     <div className="aboutintro-stat" data-aos="fade-up" data-aos-delay={delay}>
-      <span className="aboutintro-stat-number" ref={ref}>{count}{suffix}</span>
+      <span className="aboutintro-stat-number" ref={ref}>
+        {count}
+        {suffix}
+      </span>
       <span className="aboutintro-stat-label">{label}</span>
     </div>
   );
@@ -95,35 +138,46 @@ const CardGrid = ({ children, className = "" }) => (
 );
 
 const SectionWrapper = ({ children, className = "" }) => (
-  <section className={`aboutintro-section aboutintro-sectionwrapper ${className}`}>{children}</section>
+  <section
+    className={`aboutintro-section aboutintro-sectionwrapper ${className}`}
+  >
+    {children}
+  </section>
 );
-
-
 
 const AboutSection = () => {
   const capabilities = [
     "Structural steel works",
-    "Large-scale civil construction", 
+    "Large-scale civil construction",
     "Utility and infrastructure development",
-    "A wide range of interior and finishing services"
+    "A wide range of interior and finishing services",
   ];
   const stats = [
     { number: "25+", label: "Years of Excellence" },
     { number: "150+", label: "Projects Completed" },
     { number: "180+", label: "Mn. Sq. Ft. Delivered" },
-    { number: "170+", label: "Mn. Sq. Ft. Underway" }
+    { number: "170+", label: "Mn. Sq. Ft. Underway" },
   ];
   return (
     <SectionWrapper className="aboutintro-about">
       <div className="aboutintro-flexrow">
-        <div className="aboutintro-col aboutintro-col-content aboutintro-bgaccent" data-aos="fade-right">
+        <div
+          className="aboutintro-col aboutintro-col-content aboutintro-bgaccent"
+          data-aos="fade-right"
+        >
           <p className="aboutintro-subtitle">About</p>
-          <h2 className="aboutintro-title">Proven Excellence in Construction</h2>
+          <h2 className="aboutintro-title">
+            Proven Excellence in Construction
+          </h2>
           <div className="aboutintro-about-text">
-          <p>
-             <strong>CI Associates</strong>, led by <strong>Mr. CI Salam</strong>, is a Kochi-based construction and infrastructure firm with operations across South India. With decades of expertise, we deliver industrial, commercial, and civil projects, specializing in advanced structural works, large-scale fabrication, smart infrastructure, and premium interior finishes.
-          </p>
-
+            <p>
+              <strong>CI Associates</strong>, led by{" "}
+              <strong>Mr. CI Salam</strong>, is a Kochi-based construction and
+              infrastructure firm with operations across South India. With
+              decades of expertise, we deliver industrial, commercial, and civil
+              projects, specializing in advanced structural works, large-scale
+              fabrication, smart infrastructure, and premium interior finishes.
+            </p>
 
             {/* <p><strong>Our core capabilities include:</strong></p>
             <ul className="aboutintro-capabilities-list">
@@ -131,11 +185,13 @@ const AboutSection = () => {
                 <li key={i}><IconSVG iconType="check" className="aboutintro-checkicon" />{cap}</li>
               ))}
             </ul> */}
-           
           </div>
         </div>
         <div className="aboutintro-divider" />
-        <div className="aboutintro-col aboutintro-col-cards" data-aos="fade-left">
+        <div
+          className="aboutintro-col aboutintro-col-cards"
+          data-aos="fade-left"
+        >
           <CardGrid className="aboutintro-stats">
             {stats.map((stat, index) => (
               <StatItem
@@ -154,11 +210,11 @@ const AboutSection = () => {
 
 const AboutIntro = () => {
   useEffect(() => {
-    AOS.init({ 
-      once: true, 
-      duration: 900, 
-      offset: 80, 
-      easing: "ease-out-cubic" 
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80,
+      easing: "ease-out-cubic",
     });
   }, []);
   return (
@@ -168,4 +224,4 @@ const AboutIntro = () => {
   );
 };
 
-export default AboutIntro; 
+export default AboutIntro;

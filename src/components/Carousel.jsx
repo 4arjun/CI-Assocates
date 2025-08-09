@@ -80,7 +80,7 @@ const Carousel = () => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -99,25 +99,25 @@ const Carousel = () => {
     const targetSection = document.querySelector(link);
     if (targetSection) {
       targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
 
   useEffect(() => {
-    AOS.init({ 
-      once: true, 
-      duration: 900, 
-      offset: 80, 
-      easing: "ease-out-cubic" 
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80,
+      easing: "ease-out-cubic",
     });
   }, []);
 
   return (
     <section className="carousel-section">
       <div className="carousel-container">
-        <div 
+        <div
           className="carousel-wrapper"
           ref={carouselRef}
           onTouchStart={onTouchStart}
@@ -214,4 +214,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel; 
+export default Carousel;

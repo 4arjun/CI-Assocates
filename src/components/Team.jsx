@@ -8,11 +8,11 @@ const Team = () => {
   const [membersPerPage, setMembersPerPage] = useState(3);
 
   useEffect(() => {
-    AOS.init({ 
-      once: true, 
-      duration: 900, 
-      offset: 80, 
-      easing: "ease-out-cubic" 
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80,
+      easing: "ease-out-cubic",
     });
 
     // Function to determine members per page based on screen size
@@ -32,10 +32,10 @@ const Team = () => {
     updateMembersPerPage();
 
     // Add event listener for window resize
-    window.addEventListener('resize', updateMembersPerPage);
+    window.addEventListener("resize", updateMembersPerPage);
 
     // Cleanup
-    return () => window.removeEventListener('resize', updateMembersPerPage);
+    return () => window.removeEventListener("resize", updateMembersPerPage);
   }, []);
 
   const teamMembers = [
@@ -44,65 +44,81 @@ const Team = () => {
       name: "C. I. Salam",
       title: "Managing Partner",
       initials: "CS",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Visionary leader and founder, overseeing strategic direction and overall operations of CI Associates."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "Visionary leader and founder, overseeing strategic direction and overall operations of CI Associates.",
     },
     {
       id: 2,
       name: "Shaji Kumar R.",
       title: "Chief Operating Officer (COO)",
       initials: "SK",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Senior executive (DME) responsible for day-to-day operations and efficient project execution."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "Senior executive (DME) responsible for day-to-day operations and efficient project execution.",
     },
     {
       id: 3,
       name: "Abhijith Babu",
       title: "Senior Manager (Engineering)",
       initials: "AB",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "B.Tech (Civil) professional leading engineering operations with a focus on technical excellence."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.",
     },
     {
       id: 4,
       name: "Milben David",
       title: "Manager (Finance)",
       initials: "MD",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.",
     },
     {
       id: 5,
       name: "Manu Soman",
       title: "Project Coordinator",
       initials: "MS",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "B.Tech (Civil) professional coordinating project timelines, resources, and client communications."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "B.Tech (Civil) professional coordinating project timelines, resources, and client communications.",
     },
     {
       id: 6,
       name: "Shaju Stephen",
       title: "Manager (Admin)",
       initials: "SS",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Handles administrative management and supports coordination across departments."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "Handles administrative management and supports coordination across departments.",
     },
     {
       id: 7,
       name: "Rakesh",
       title: "Civil Engineer",
       initials: "R",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "On-site civil engineer contributing to structural design, planning, and site management."
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "On-site civil engineer contributing to structural design, planning, and site management.",
     },
     {
       id: 8,
       name: "Mohammed Asadullah M.S.",
       title: "Team Member",
       initials: "MA",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Team member contributing to project execution; role and specialization to be confirmed."
-    }
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      description:
+        "Team member contributing to project execution; role and specialization to be confirmed.",
+    },
   ];
 
   const totalPages = Math.ceil(teamMembers.length / membersPerPage);
@@ -133,18 +149,20 @@ const Team = () => {
               <h2 className="board-directors-title">Our Team</h2>
               <div className="board-directors-description-row">
                 <p className="board-directors-description">
-                  Meet the dedicated professionals who drive CI Associates' success, bringing specialized expertise 
-                  in engineering, finance, operations, and project management to deliver exceptional construction solutions.
+                  Meet the dedicated professionals who drive CI Associates'
+                  success, bringing specialized expertise in engineering,
+                  finance, operations, and project management to deliver
+                  exceptional construction solutions.
                 </p>
                 <div className="board-directors-nav-buttons">
-                  <button 
+                  <button
                     className="board-directors-nav-btn board-directors-prev-btn"
                     onClick={prevPage}
                     aria-label="Previous directors"
                   >
                     ‹
                   </button>
-                  <button 
+                  <button
                     className="board-directors-nav-btn board-directors-next-btn"
                     onClick={nextPage}
                     aria-label="Next directors"
@@ -182,7 +200,9 @@ const Team = () => {
               {Array.from({ length: totalPages }, (_, index) => (
                 <button
                   key={index}
-                  className={`board-directors-dot ${index === currentPage ? 'active' : ''}`}
+                  className={`board-directors-dot ${
+                    index === currentPage ? "active" : ""
+                  }`}
                   onClick={() => setCurrentPage(index)}
                   aria-label={`Go to page ${index + 1}`}
                 />
@@ -195,4 +215,4 @@ const Team = () => {
   );
 };
 
-export default Team; 
+export default Team;

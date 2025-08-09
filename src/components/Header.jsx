@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import logoImage from "../assets/logo.jpeg";
 import "./Header.css";
 
-const Header = ({ 
-  isScrolled, 
-  isMobileMenuOpen, 
-  setIsMobileMenuOpen, 
+const Header = ({
+  isScrolled,
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
   isScrolling,
-  scrollY
+  scrollY,
 }) => {
   const [animateIn, setAnimateIn] = useState(false);
   const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
@@ -34,13 +34,17 @@ const Header = ({
   return (
     <header
       className={`header ${isScrolled ? "scrolled" : ""} ${
-        !hasAnimatedIn ? (animateIn ? "navbar-animate-in" : "navbar-hidden") : ""
+        !hasAnimatedIn
+          ? animateIn
+            ? "navbar-animate-in"
+            : "navbar-hidden"
+          : ""
       }`}
       style={
         hasAnimatedIn
           ? {
               transform: `translateY(${navbarOffset}px)`,
-              willChange: "transform"
+              willChange: "transform",
             }
           : undefined
       }
@@ -70,40 +74,30 @@ const Header = ({
           <a href="#team" onClick={closeMobileMenu}>
             Team
           </a>
-          <a href="#contact" className="btn btn-primary" onClick={closeMobileMenu}>
+          <a
+            href="#contact"
+            className="btn btn-primary"
+            onClick={closeMobileMenu}
+          >
             Contact Us
           </a>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          className="mobile-menu-btn"
-          onClick={toggleMobileMenu}
-        >
+        <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
           <span className="hamburger">
-            <span
-              className={`line ${isMobileMenuOpen ? "open" : ""}`}
-            ></span>
-            <span
-              className={`line ${isMobileMenuOpen ? "open" : ""}`}
-            ></span>
-            <span
-              className={`line ${isMobileMenuOpen ? "open" : ""}`}
-            ></span>
+            <span className={`line ${isMobileMenuOpen ? "open" : ""}`}></span>
+            <span className={`line ${isMobileMenuOpen ? "open" : ""}`}></span>
+            <span className={`line ${isMobileMenuOpen ? "open" : ""}`}></span>
           </span>
         </button>
       </div>
 
       {/* Mobile Navigation Overlay */}
-      <div
-        className={`mobile-nav-overlay ${isMobileMenuOpen ? "active" : ""}`}
-      >
+      <div className={`mobile-nav-overlay ${isMobileMenuOpen ? "active" : ""}`}>
         <div className="mobile-nav-content">
           {/* Close Button */}
-          <button
-            className="mobile-nav-close"
-            onClick={closeMobileMenu}
-          >
+          <button className="mobile-nav-close" onClick={closeMobileMenu}>
             ×
           </button>
 
@@ -134,4 +128,4 @@ const Header = ({
   );
 };
 
-export default Header; 
+export default Header;

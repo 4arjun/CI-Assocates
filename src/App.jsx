@@ -77,23 +77,23 @@ const App = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Check if scrolled past threshold
       setIsScrolled(currentScrollY > 50);
-      
+
       // Track scroll position continuously
       setScrollY(currentScrollY);
-      
+
       setIsScrolling(true);
       document.body.classList.add("scrolling");
-      
+
       clearTimeout(window.scrollTimeout);
       window.scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
         document.body.classList.remove("scrolling");
       }, 150);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -113,7 +113,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header 
+      <Header
         isScrolled={isScrolled}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}

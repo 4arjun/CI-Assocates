@@ -11,21 +11,21 @@ import project6 from "../assets/project6.jpeg";
 
 const Projects = () => {
   useEffect(() => {
-    AOS.init({ 
-      once: true, 
-      duration: 900, 
-      offset: 80, 
-      easing: "ease-out-cubic" 
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80,
+      easing: "ease-out-cubic",
     });
   }, []);
 
   const projectItems = [
-    { src: project1, type: "Industrial", location: "Kochi, Kerala" },
-    { src: project2, type: "Commercial", location: "Bengaluru, Karnataka" },
+    { src: project1, type: "Residential", location: "Kochi, Kerala" },
+    { src: project2, type: "Residential", location: "Bengaluru, Karnataka" },
     { src: project3, type: "Residential", location: "Trivandrum, Kerala" },
-    { src: project4, type: "Industrial", location: "Coimbatore, Tamil Nadu" },
-    { src: project5, type: "Mixed-Use", location: "Kakkanad, Kerala" },
-    { src: project6, type: "Infrastructure", location: "Calicut, Kerala" }
+    { src: project4, type: "Commercial", location: "Coimbatore, Tamil Nadu" },
+    { src: project5, type: "Commercial", location: "Kakkanad, Kerala" },
+    { src: project6, type: "Commercial", location: "Calicut, Kerala" },
   ];
 
   return (
@@ -43,11 +43,7 @@ const Projects = () => {
           >
             Our Portfolio
           </span>
-          <h2
-            className="section-title"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
+          <h2 className="section-title" data-aos="fade-up" data-aos-delay="300">
             Featured Construction Projects
           </h2>
           <p
@@ -71,7 +67,9 @@ const Projects = () => {
             >
               <div className="project-image-container">
                 <img src={p.src} alt={`${p.type} project`} loading="lazy" />
-                <span className="project-chip project-chip-fixed">{p.type}</span>
+                <span className="project-chip project-chip-fixed">
+                  {p.type}
+                </span>
                 <div className="project-overlay">
                   <p className="project-location">{p.location}</p>
                 </div>
@@ -79,11 +77,9 @@ const Projects = () => {
             </figure>
           ))}
         </div>
-
-       
       </div>
     </section>
   );
 };
 
-export default Projects; 
+export default Projects;

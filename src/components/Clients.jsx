@@ -9,35 +9,34 @@ const Clients = () => {
       id: 1,
       name: "TechCorp Solutions",
       sector: "Technology",
-      project: "Corporate Headquarters"
+      project: "Corporate Headquarters",
     },
     {
       id: 2,
       name: "Prestige Group",
       sector: "Real Estate",
-      project: "Residential Complex"
+      project: "Residential Complex",
     },
     {
       id: 3,
       name: "Infosys Limited",
       sector: "IT Services",
-      project: "Development Center"
+      project: "Development Center",
     },
     {
       id: 4,
       name: "Brigade Enterprises",
       sector: "Real Estate",
-      project: "Commercial Mall"
+      project: "Commercial Mall",
     },
-    
   ];
 
   useEffect(() => {
-    AOS.init({ 
-      once: true, 
-      duration: 900, 
-      offset: 80, 
-      easing: "ease-out-cubic" 
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80,
+      easing: "ease-out-cubic",
     });
   }, []);
 
@@ -68,9 +67,9 @@ const Clients = () => {
             data-aos="fade-up"
             data-aos-delay="600"
           >
-            We have had the privilege of working with some of the most respected companies 
-            across various industries, delivering exceptional construction solutions that meet 
-            their unique requirements.
+            We have had the privilege of working with some of the most respected
+            companies across various industries, delivering exceptional
+            construction solutions that meet their unique requirements.
           </p>
         </div>
 
@@ -80,11 +79,15 @@ const Clients = () => {
               key={client.id}
               className="clients-portfolio-card"
               data-aos="fade-up"
-              data-aos-delay={100 + (index * 100)}
+              data-aos-delay={100 + index * 100}
             >
               <div className="clients-portfolio-logo">
                 <div className="clients-logo-placeholder">
-                  {client.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
+                  {client.name
+                    .split(" ")
+                    .map((word) => word[0])
+                    .join("")
+                    .slice(0, 2)}
                 </div>
               </div>
               <div className="clients-portfolio-info">
@@ -95,11 +98,9 @@ const Clients = () => {
             </div>
           ))}
         </div>
-
-     
       </div>
     </section>
   );
 };
 
-export default Clients; 
+export default Clients;

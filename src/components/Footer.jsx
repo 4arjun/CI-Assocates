@@ -18,11 +18,11 @@ import "./Footer.css";
 
 const Footer = () => {
   useEffect(() => {
-    AOS.init({ 
-      once: true, 
-      duration: 900, 
-      offset: 80, 
-      easing: "ease-out-cubic" 
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80,
+      easing: "ease-out-cubic",
     });
   }, []);
 
@@ -56,9 +56,8 @@ const Footer = () => {
                 </div>
                 <p className="site-footer-description">
                   Building dreams into reality with over 38 years of
-                  construction excellence. From residential homes to
-                  commercial complexes, we deliver quality that stands the
-                  test of time.
+                  construction excellence. From residential homes to commercial
+                  complexes, we deliver quality that stands the test of time.
                 </p>
                 <div className="site-footer-social">
                   <a href="#" className="site-footer-social-link">
@@ -144,9 +143,7 @@ const Footer = () => {
               <div className="footer-bottom-right">
                 <div className="footer-certifications">
                   <span className="certification-badge">LEED Certified</span>
-                  <span className="certification-badge">
-                    Licensed & Bonded
-                  </span>
+                  <span className="certification-badge">Licensed & Bonded</span>
                   <span className="certification-badge">ISO 9001</span>
                 </div>
               </div>
@@ -169,4 +166,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

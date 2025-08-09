@@ -1,5 +1,5 @@
-import React from 'react';
-import './SplashScreen.css';
+import React from "react";
+import "./SplashScreen.css";
 
 const SplashScreen = () => {
   return (
@@ -9,4 +9,4 @@ const SplashScreen = () => {
   );
 };
 
-export default SplashScreen; 
+export default SplashScreen;
