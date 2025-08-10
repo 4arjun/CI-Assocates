@@ -115,7 +115,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="footer__bottom" data-aos="fade-up" data-aos-delay="200">
+        <div className="footer__bottom">
           <p>
             &copy; {new Date().getFullYear()} CI Associates. All rights
             reserved.
