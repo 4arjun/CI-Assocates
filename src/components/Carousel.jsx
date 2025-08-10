@@ -17,7 +17,7 @@ const Carousel = () => {
       title: "Engineering Spaces, Elevating Standards",
       subtitle: "Delivering End-to-End Construction Excellence",
       description:
-        "With over decades of experience, CI Associates provides comprehensive solutions across industrial, commercial, and civil sectors—combining innovation, precision, and quality.",
+        "With over decades of experience, CI Associates provides comprehensive solutions across industrial, commercial, and civil sectors-combining innovation, precision, and quality.",
       image:
         "https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       buttonText: "ABOUT US",
@@ -28,7 +28,7 @@ const Carousel = () => {
       title: "From Vision to Reality",
       subtitle: "Civil, Steel, and Interior Experts",
       description:
-        "Whether it's massive RCC structures or precision interior finishes, our expertise spans the entire project lifecycle—from concept to completion.",
+        "Whether it's massive RCC structures or precision interior finishes, our expertise spans the entire project lifecycle-from concept to completion.",
       image:
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
       buttonText: "PROJECTS",

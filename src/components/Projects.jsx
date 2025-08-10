@@ -29,10 +29,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="projects-section section">
-      <div className="container">
+    <section id="projects" className="ca-projects">
+      <div className="ca-projects__container">
         <div
-          className="projects-header"
+          className="ca-projects__header"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -47,7 +47,7 @@ const Projects = () => {
             Featured Construction Projects
           </h2>
           <p
-            className="projects-description"
+            className="ca-projects__description"
             data-aos="fade-up"
             data-aos-delay="400"
           >
@@ -57,21 +57,26 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="projects-grid">
+        <div className="ca-projects__grid">
           {projectItems.map((p, index) => (
             <figure
               key={`${p.type}-${index}`}
-              className="project-card"
+              className="ca-projects__card"
               data-aos="fade-up"
               data-aos-delay={(index + 1) * 100}
             >
-              <div className="project-image-container">
-                <img src={p.src} alt={`${p.type} project`} loading="lazy" />
-                <span className="project-chip project-chip-fixed">
+              <div className="ca-projects__image-container">
+                <img
+                  src={p.src}
+                  alt={`${p.type} project`}
+                  loading="lazy"
+                  className="ca-projects__image"
+                />
+                <span className="ca-projects__chip ca-projects__chip--fixed">
                   {p.type}
                 </span>
-                <div className="project-overlay">
-                  <p className="project-location">{p.location}</p>
+                <div className="ca-projects__overlay">
+                  <p className="ca-projects__location">{p.location}</p>
                 </div>
               </div>
             </figure>

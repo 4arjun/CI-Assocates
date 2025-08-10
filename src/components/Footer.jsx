@@ -1,19 +1,8 @@
 import React, { useEffect } from "react";
-import {
-  Facebook,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Twitter,
-  Instagram,
-  Youtube,
-  Linkedin,
-  ArrowUp,
-} from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import logoImage from "../assets/aa.avif";
+import logoImage from "../assets/logo.jpeg";
 import "./Footer.css";
 
 const Footer = () => {
@@ -27,141 +16,120 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer id="contact" className="site-footer-main">
-      <div className="site-footer-content">
-        <div className="container">
-          {/* Footer Top */}
-          <div
-            className="site-footer-top"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div className="site-footer-grid">
-              {/* Company Info */}
-              <div
-                className="site-footer-section company-info"
-                data-aos="fade-right"
-                data-aos-delay="100"
-              >
-                <div className="site-footer-logo">
-                  <img
-                    src={logoImage}
-                    alt="CA Associates Logo"
-                    className="footer-logo-img"
-                  />
-                  <div className="footer-logo-text">
-                    <h3>CA ASSOCIATES</h3>
-                    <span>Construction Excellence</span>
-                  </div>
-                </div>
-                <p className="site-footer-description">
-                  Building dreams into reality with over 38 years of
-                  construction excellence. From residential homes to commercial
-                  complexes, we deliver quality that stands the test of time.
-                </p>
-                <div className="site-footer-social">
-                  <a href="#" className="site-footer-social-link">
-                    <Facebook size={20} />
-                  </a>
-                  <a href="#" className="site-footer-social-link">
-                    <Twitter size={20} />
-                  </a>
-                  <a href="#" className="site-footer-social-link">
-                    <Linkedin size={20} />
-                  </a>
-                  <a href="#" className="site-footer-social-link">
-                    <Instagram size={20} />
-                  </a>
-                  <a href="#" className="site-footer-social-link">
-                    <Youtube size={20} />
-                  </a>
-                </div>
+    <footer id="contact" className="footer">
+      <div className="footer__container">
+        {/* Main Content */}
+        <div className="footer__main" data-aos="fade-up" data-aos-delay="100">
+          {/* Company Section */}
+          <div className="footer__company">
+            <div className="footer__logo">
+              <img
+                src={logoImage}
+                alt="CI Associates Logo"
+                className="footer__logo-img"
+              />
+              <div className="footer__logo-text">
+                <h3>CI ASSOCIATES</h3>
+                <span>Construction Excellence</span>
               </div>
+            </div>
+            <p className="footer__description">
+              We deliver high‑quality residential and commercial projects with
+              integrity and craftsmanship.
+            </p>
+          </div>
 
-              {/* Contact Info */}
-              <div
-                className="site-footer-section contact-info"
-                data-aos="fade-left"
-                data-aos-delay="400"
-              >
-                <h4 className="site-footer-title">Contact Information</h4>
-                <div className="site-footer-contact">
-                  <div className="site-footer-contact-item">
-                    <MapPin size={18} className="contact-icon" />
-                    <div className="contact-details">
-                      <span className="contact-label">Address</span>
-                      <span className="contact-value">
-                        123 Construction Ave, Building City, BC 12345
-                      </span>
-                    </div>
+          {/* Contact Section */}
+          <div className="footer__contact">
+            {/* Kerala Office */}
+            <div
+              className="footer__office"
+              data-aos="fade-up"
+              data-aos-delay="150"
+            >
+              <div className="footer__office-header">
+                <h5>Kerala Office</h5>
+              </div>
+              <div className="footer__info">
+                <div className="footer__info-item">
+                  <MapPin size={16} />
+                  <span>
+                    Hawwa Tower, Aluva Road, Brahmapuram P.O., Karimugal,
+                    Ernakulam, Kerala - 682303
+                  </span>
+                </div>
+                <div className="footer__info-item">
+                  <Phone size={16} />
+                  <div className="footer__links">
+                    <a href="tel:+919846984607">+91 98469 84607</a>
+                    <a href="tel:+919847323237">+91 98473 23237</a>
                   </div>
-                  <div className="site-footer-contact-item">
-                    <Phone size={18} className="contact-icon" />
-                    <div className="contact-details">
-                      <span className="contact-label">Phone</span>
-                      <span className="contact-value">+1 (555) 123-4567</span>
-                    </div>
-                  </div>
-                  <div className="site-footer-contact-item">
-                    <Mail size={18} className="contact-icon" />
-                    <div className="contact-details">
-                      <span className="contact-label">Email</span>
-                      <span className="contact-value">
-                        info@caassociates.com
-                      </span>
-                    </div>
-                  </div>
-                  <div className="site-footer-contact-item">
-                    <Clock size={18} className="contact-icon" />
-                    <div className="contact-details">
-                      <span className="contact-label">Hours</span>
-                      <span className="contact-value">
-                        Mon - Fri: 8:00 AM - 6:00 PM
-                      </span>
-                    </div>
+                </div>
+                <div className="footer__info-item">
+                  <Mail size={16} />
+                  <div className="footer__links">
+                    {/* <a href="mailto:ciconstructions@hotmail.com">ciconstructions@hotmail.com</a> */}
+                    <a href="mailto:ciaconstructions@gmail.com">
+                      ciaconstructions@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Footer Bottom */}
-          <div
-            className="site-footer-bottom"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <div className="footer-bottom-content">
-              <div className="footer-bottom-left">
-                <p>&copy; 2024 CA Associates. All rights reserved.</p>
-                <div className="footer-legal-links">
-                  <a href="#privacy">Privacy Policy</a>
-                  <a href="#terms">Terms of Service</a>
-                  <a href="#cookies">Cookie Policy</a>
-                </div>
+            {/* Bengaluru Office */}
+            <div
+              className="footer__office"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div className="footer__office-header">
+                <h5>Bengaluru Office</h5>
               </div>
-              <div className="footer-bottom-right">
-                <div className="footer-certifications">
-                  <span className="certification-badge">LEED Certified</span>
-                  <span className="certification-badge">Licensed & Bonded</span>
-                  <span className="certification-badge">ISO 9001</span>
+              <div className="footer__info">
+                <div className="footer__info-item">
+                  <MapPin size={16} />
+                  <span>
+                    No. 418, 4th Main Road, 4th Cross, Coffee Board Layout, H.A.
+                    Farm Post, Hebbal, Kempapura, Bengaluru - 560024
+                  </span>
+                </div>
+                <div className="footer__info-item">
+                  <Phone size={16} />
+                  <div className="footer__links">
+                    <a href="tel:+919745105909">+91 97451 05909</a>
+                    <a href="tel:+917012403609">+91 70124 03609</a>
+                  </div>
+                </div>
+                <div className="footer__info-item">
+                  <Mail size={16} />
+                  <div className="footer__links">
+                    <a href="mailto:ciassociates@gmail.com">
+                      ciassociates@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Bottom */}
+        <div className="footer__bottom" data-aos="fade-up" data-aos-delay="200">
+          <p>
+            &copy; {new Date().getFullYear()} CI Associates. All rights
+            reserved.
+          </p>
+        </div>
       </div>
 
-      {/* Back to Top Button */}
+      {/* Back to Top */}
       <button
-        className="site-footer-back-to-top"
+        className="footer__back-to-top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         <ArrowUp size={20} />
       </button>
-
-      {/* Footer Background Pattern */}
-      <div className="site-footer-pattern"></div>
     </footer>
   );
 };

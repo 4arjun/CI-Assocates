@@ -178,9 +178,11 @@ const Services = ({ isScrolling }) => {
   };
 
   return (
-    <section  className="services section">
+    <section className="services section">
       <div className="services-header" data-aos="fade-up" data-aos-delay="200">
-        <h2 id="services" className="section-title">Our Services</h2>
+        <h2 id="services" className="section-title">
+          Our Services
+        </h2>
       </div>
       <div className="container-service">
         <div className="services-grid">
@@ -214,7 +216,10 @@ const Services = ({ isScrolling }) => {
 
       {/* Service Details Modal */}
       {selectedService && (
-        <div className={`modal-overlay ${isModalClosing ? "closing" : "open"}`} onClick={handleCloseModal}>
+        <div
+          className={`modal-overlay ${isModalClosing ? "closing" : "open"}`}
+          onClick={handleCloseModal}
+        >
           <div
             className={`modal-content ${isModalClosing ? "closing" : "open"}`}
             onClick={(e) => e.stopPropagation()}
@@ -235,7 +240,9 @@ const Services = ({ isScrolling }) => {
                 alt={selectedService.title}
                 className="modal-image"
               />
-              <h3 id="service-modal-title" className="modal-title">{selectedService.title}</h3>
+              <h3 id="service-modal-title" className="modal-title">
+                {selectedService.title}
+              </h3>
             </div>
             <div className="modal-body">
               <div className="modal-body-grid">
@@ -247,10 +254,11 @@ const Services = ({ isScrolling }) => {
                   <h4 className="modal-section-title">Key Features</h4>
                   <ul className="modal-feature-list">
                     {selectedService.features.map((feature, index) => (
-                      <li className="modal-feature-item" key={index}>{feature}</li>
+                      <li className="modal-feature-item" key={index}>
+                        {feature}
+                      </li>
                     ))}
                   </ul>
-                 
                 </div>
               </div>
             </div>

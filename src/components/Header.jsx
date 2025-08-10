@@ -16,7 +16,7 @@ const Header = ({
     setAnimateIn(true);
     const timer = setTimeout(() => {
       setHasAnimatedIn(true);
-    }, 900); 
+    }, 900);
     return () => clearTimeout(timer);
   }, []);
 
@@ -85,7 +85,7 @@ const Header = ({
           <a href="#projects" onClick={(e) => handleNavClick(e, "projects")}>
             Projects
           </a>
-          <a href="#team"  onClick={(e) => handleNavClick(e, "team")}>
+          <a href="#team" onClick={(e) => handleNavClick(e, "team")}>
             Team
           </a>
           <a

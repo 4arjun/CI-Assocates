@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { IconButton } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import "./Team.css";
 
 const Team = () => {
@@ -18,20 +20,20 @@ const Team = () => {
     // Function to determine members per page based on screen size
     const updateMembersPerPage = () => {
       if (window.innerWidth <= 480) {
-        setMembersPerPage(1); // Mobile: 1 card per row
+        setMembersPerPage(1); // 1 member per page on very small screens
       } else if (window.innerWidth <= 768) {
-        setMembersPerPage(1); // Small tablet: 1 card per row
-      } else if (window.innerWidth <= 991) {
-        setMembersPerPage(2); // Tablet: 2 cards per row
+        setMembersPerPage(2); // 2 members per page on mobile
+      } else if (window.innerWidth <= 1024) {
+        setMembersPerPage(2); // 2 members per page on tablet
       } else {
-        setMembersPerPage(3); // Desktop: 3 cards per row
+        setMembersPerPage(3); // 3 members per page on desktop
       }
     };
 
     // Set initial value
     updateMembersPerPage();
 
-    // Add event listener for window resize
+    // Add event listener
     window.addEventListener("resize", updateMembersPerPage);
 
     // Cleanup
@@ -44,8 +46,6 @@ const Team = () => {
       name: "C. I. Salam",
       title: "Managing Partner",
       initials: "CS",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description:
         "Visionary leader and founder, overseeing strategic direction and overall operations of CI Associates.",
     },
@@ -54,70 +54,64 @@ const Team = () => {
       name: "Shaji Kumar R.",
       title: "Chief Operating Officer (COO)",
       initials: "SK",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description:
         "Senior executive (DME) responsible for day-to-day operations and efficient project execution.",
     },
     {
       id: 3,
-      name: "Abhijith Babu",
-      title: "Senior Manager (Engineering)",
-      initials: "AB",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      name: "Shaju Stephen",
+      title: "Manager",
+      initials: "SS",
       description:
-        "B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.",
+        "Handles administrative management and supports coordination across departments.",
     },
     {
       id: 4,
-      name: "Milben David",
-      title: "Manager (Finance)",
-      initials: "MD",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description:
-        "Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.",
-    },
-    {
-      id: 5,
       name: "Manu Soman",
       title: "Project Coordinator",
       initials: "MS",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description:
         "B.Tech (Civil) professional coordinating project timelines, resources, and client communications.",
     },
     {
-      id: 6,
-      name: "Shaju Stephen",
-      title: "Manager (Admin)",
-      initials: "SS",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      id: 5,
+      name: "Milben David",
+      title: "Finance Consultant",
+      initials: "MD",
       description:
-        "Handles administrative management and supports coordination across departments.",
+        "Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.",
+    },
+    {
+      id: 6,
+      name: "Abhijith Babu",
+      title: "Senior Manager (Engineering)",
+      initials: "AB",
+      description:
+        "B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.",
     },
     {
       id: 7,
       name: "Rakesh",
       title: "Civil Engineer",
       initials: "R",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description:
         "On-site civil engineer contributing to structural design, planning, and site management.",
     },
     {
       id: 8,
       name: "Mohammed Asadullah M.S.",
-      title: "Team Member",
+      title: "Civil Engineer",
       initials: "MA",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description:
-        "Team member contributing to project execution; role and specialization to be confirmed.",
+        "Civil engineer contributing to project execution and structural design.",
+    },
+    {
+      id: 9,
+      name: "Anoop S",
+      title: "Site Engineer",
+      initials: "AS",
+      description:
+        "Site engineer responsible for on-site supervision and quality control.",
     },
   ];
 
@@ -136,76 +130,115 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="board-directors-section">
-      <div className="board-directors-container">
-        <div className="board-directors-content">
-          {/* Left side - Text content */}
-          <div className="board-directors-text">
-            <div
-              className="board-directors-header"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <h2 className="board-directors-title">Our Team</h2>
-              <div className="board-directors-description-row">
-                <p className="board-directors-description">
+    <section id="team" className="ca-team">
+      <div className="ca-team__container">
+        <div className="ca-team__content" data-aos="fade-up">
+          {/* Left side - Content */}
+          <div className="ca-team__text-section">
+            <div className="ca-team__text-wrapper">
+              <span
+                className="section-subtitle"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                Our Leadership
+              </span>
+              <h2
+                className="section-title"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                Meet Our Expert Team
+              </h2>
+              <div className="ca-team__description-row">
+                <p className="ca-team__description">
                   Meet the dedicated professionals who drive CI Associates'
                   success, bringing specialized expertise in engineering,
                   finance, operations, and project management to deliver
                   exceptional construction solutions.
                 </p>
-                <div className="board-directors-nav-buttons">
-                  <button
-                    className="board-directors-nav-btn board-directors-prev-btn"
+                <div className="ca-team__nav-buttons">
+                  <IconButton
                     onClick={prevPage}
+                    disabled={currentPage === 0}
                     aria-label="Previous directors"
+                    sx={{
+                      backgroundColor: "rgba(255, 255, 255, 0.9)",
+                      color: "#1a1a1a",
+                      border: "1px solid rgba(212, 165, 116, 0.3)",
+                      width: 48,
+                      height: 48,
+                      marginRight: 1,
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#d4a574",
+                        color: "#1a1a1a",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 8px 25px rgba(212, 165, 116, 0.3)",
+                      },
+                      "&:disabled": {
+                        backgroundColor: "rgba(255, 255, 255, 0.5)",
+                        color: "rgba(26, 26, 26, 0.3)",
+                        transform: "none",
+                        boxShadow: "none",
+                      },
+                    }}
                   >
-                    ‹
-                  </button>
-                  <button
-                    className="board-directors-nav-btn board-directors-next-btn"
+                    <ChevronLeft />
+                  </IconButton>
+                  <IconButton
                     onClick={nextPage}
+                    disabled={
+                      currentPage >=
+                      Math.ceil(teamMembers.length / membersPerPage) - 1
+                    }
                     aria-label="Next directors"
+                    sx={{
+                      backgroundColor: "rgba(255, 255, 255, 0.9)",
+                      color: "#1a1a1a",
+                      border: "1px solid rgba(212, 165, 116, 0.3)",
+                      width: 48,
+                      height: 48,
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#d4a574",
+                        color: "#1a1a1a",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 8px 25px rgba(212, 165, 116, 0.3)",
+                      },
+                      "&:disabled": {
+                        backgroundColor: "rgba(255, 255, 255, 0.5)",
+                        color: "rgba(26, 26, 26, 0.3)",
+                        transform: "none",
+                        boxShadow: "none",
+                      },
+                    }}
                   >
-                    ›
-                  </button>
+                    <ChevronRight />
+                  </IconButton>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right side - Team cards */}
-          <div className="board-directors-cards-section">
-            <div className="board-directors-grid">
+          <div className="ca-team__cards-section">
+            <div className="ca-team__grid">
               {currentMembers.map((member, index) => (
                 <div
                   key={member.id}
-                  className="board-directors-card"
+                  className="ca-team__card"
                   data-aos="fade-up"
                   data-aos-delay={100 * (index + 1)}
                 >
-                  <div className="board-directors-image">
-                    <img src={member.image} alt={member.name} />
+                  <div className="ca-team__image">
+                    <div className="ca-team__initials">{member.initials}</div>
                   </div>
-                  <div className="board-directors-info">
-                    <h3 className="board-directors-name">{member.name}</h3>
-                    <p className="board-directors-title-text">{member.title}</p>
+                  <div className="ca-team__info">
+                    <h3 className="ca-team__name">{member.name}</h3>
+                    <p className="ca-team__title">{member.title}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Pagination dots */}
-            <div className="board-directors-pagination">
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index}
-                  className={`board-directors-dot ${
-                    index === currentPage ? "active" : ""
-                  }`}
-                  onClick={() => setCurrentPage(index)}
-                  aria-label={`Go to page ${index + 1}`}
-                />
               ))}
             </div>
           </div>
