@@ -80,7 +80,7 @@
   object-fit: cover;
   transition: transform var(--transition-normal),
     filter var(--transition-normal);
-  filter: brightness(0.82) contrast(1.06) saturate(1.05);
+  filter: brightness(0.45) contrast(1.06) saturate(1.05);
 }
 
 .service-card:hover .service-image img {
