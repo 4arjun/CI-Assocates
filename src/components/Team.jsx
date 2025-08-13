@@ -180,7 +180,11 @@ const Team = () => {
                 Meet Our Expert Team
               </h2>
               <div className="ca-team__description-row">
-                <p className="ca-team__description">
+                <p 
+                  className="ca-team__description"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                >
                   Meet the dedicated professionals who drive CI Associates'
                   success, bringing specialized expertise in engineering,
                   finance, operations, and project management to deliver
