@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { IconButton } from "@mui/material";
@@ -8,6 +8,9 @@ import "./Team.css";
 const Team = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [membersPerPage, setMembersPerPage] = useState(3);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const cardsRef = useRef(null);
 
   useEffect(() => {
     AOS.init({
@@ -129,6 +132,32 @@ const Team = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentPage < totalPages - 1) {
+      nextPage();
+    }
+    if (isRightSwipe && currentPage > 0) {
+      prevPage();
+    }
+  };
+
   return (
     <section id="team" className="ca-team">
       <div className="ca-team__container">
@@ -223,7 +252,13 @@ const Team = () => {
 
           {/* Right side - Team cards */}
           <div className="ca-team__cards-section">
-            <div className="ca-team__grid">
+            <div 
+              className="ca-team__grid"
+              ref={cardsRef}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               {currentMembers.map((member, index) => (
                 <div
                   key={member.id}
@@ -240,6 +275,9 @@ const Team = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="ca-team__mobile-hint">
+              <span>Swipe to view more team members</span>
             </div>
           </div>
         </div>
