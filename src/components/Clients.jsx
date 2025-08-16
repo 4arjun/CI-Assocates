@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import "./Clients.css";
 
 const Clients = () => {
@@ -31,14 +29,7 @@ const Clients = () => {
     },
   ];
 
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
 
   return (
     <section id="clients" className="section clients-section">

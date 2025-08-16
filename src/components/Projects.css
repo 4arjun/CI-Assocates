@@ -328,4 +328,8 @@
   .ca-projects::after {
     animation: none;
   }
+
+  .ca-projects {
+    padding: 0 0;
+}
 }

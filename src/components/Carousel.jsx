@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import "./Carousel.css";
 import project1 from "../assets/project1.jpeg";
 import project2 from "../assets/project2.jpeg";
@@ -133,14 +131,7 @@ const Carousel = () => {
     }
   };
 
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
 
   return (
     <section className="carousel-section">

@@ -646,6 +646,11 @@
   .ca-team__initials {
     font-size: 2.5rem;
   }
+ 
+    .ca-team {
+        padding-top: 0;
+    
+    }
 }
 
 @media (max-width: 360px) {

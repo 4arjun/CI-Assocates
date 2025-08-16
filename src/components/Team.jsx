@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import "./Team.css";
@@ -13,13 +11,6 @@ const Team = () => {
   const cardsRef = useRef(null);
 
   useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-
     // Function to determine members per page based on screen size
     const updateMembersPerPage = () => {
       if (window.innerWidth <= 480) {

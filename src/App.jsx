@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./App.css";
 import SplashScreen from "./SplashScreen";
 import Header from "./components/Header";
@@ -105,6 +107,61 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 2200);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Initialize AOS with mobile-optimized settings
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    const isSlowDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+    
+    // Initialize AOS with mobile-friendly configuration
+    AOS.init({
+      duration: isMobile ? (isSlowDevice ? 400 : 500) : 900,
+      offset: isMobile ? 60 : 80, // Slightly smaller offset on mobile for earlier trigger
+      easing: isMobile ? "ease-out" : "ease-out-cubic",
+      once: true,
+      delay: 0,
+      disable: function() {
+        // Only disable if user explicitly prefers reduced motion
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      },
+      // Mobile-optimized settings
+      throttleDelay: isMobile ? 50 : 99,
+      debounceDelay: isMobile ? 25 : 50,
+      startEvent: 'DOMContentLoaded',
+      initClassName: 'aos-init',
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false // Keep mutation observer for proper functionality
+    });
+
+    // Handle window resize
+    const handleResize = () => {
+      clearTimeout(window.aosResizeTimeout);
+      window.aosResizeTimeout = setTimeout(() => {
+        AOS.refresh();
+      }, 200);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Failsafe: ensure content is visible if AOS fails to initialize properly
+    const mobileFailsafeTimer = setTimeout(() => {
+      const elements = document.querySelectorAll('[data-aos]:not(.aos-init)');
+      if (elements.length > 0) {
+        // Only apply fallback if AOS hasn't initialized at all
+        elements.forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+      }
+    }, 500); // Give AOS more time to initialize
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(window.aosResizeTimeout);
+      if (mobileFailsafeTimer) clearTimeout(mobileFailsafeTimer);
+    };
   }, []);
 
   if (showSplash) {

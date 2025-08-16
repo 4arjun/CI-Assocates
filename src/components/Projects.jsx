@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import "./Projects.css";
 import project1 from "../assets/project1.jpeg";
 import project2 from "../assets/project2.jpeg";
@@ -10,14 +8,7 @@ import project5 from "../assets/project5.jpeg";
 import project6 from "../assets/project6.jpeg";
 
 const Projects = () => {
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
 
   const projectItems = [
     { src: project1, type: "Residential", location: "Kochi, Kerala" },

@@ -1,19 +1,10 @@
 import React, { useEffect } from "react";
 import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import logoImage from "../assets/logo.jpeg";
 import "./Footer.css";
 
 const Footer = () => {
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
 
   return (
     <footer id="contact" className="footer">

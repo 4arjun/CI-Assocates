@@ -1,5 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap");
 
+/* AOS Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Only override duration and delays, keep animations working */
+  [data-aos] {
+    transition-duration: 0.5s !important; /* Faster animations on mobile */
+  }
+  
+  [data-aos][data-aos-delay] {
+    transition-delay: 0s !important; /* Remove delays on mobile for immediate response */
+  }
+  
+  /* Ensure content is visible if AOS fails to load */
+  [data-aos]:not(.aos-init) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Respect user's reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+      transition: none !important;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
 /* Essential global resets only */
 * {
   margin: 0;

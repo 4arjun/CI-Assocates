@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import "./About.css";
 
 // Counting animation hook with in-view trigger
@@ -209,14 +207,7 @@ const AboutSection = () => {
 };
 
 const AboutIntro = () => {
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
   return (
     <div id="about">
       <AboutSection />

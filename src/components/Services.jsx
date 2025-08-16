@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import "./Services.css";
 
 const Services = ({ isScrolling }) => {
   const [selectedService, setSelectedService] = useState(null);
   const [isModalClosing, setIsModalClosing] = useState(false);
 
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 900,
-      offset: 80,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
 
   const services = [
     {
