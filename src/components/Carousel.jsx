@@ -3,6 +3,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Carousel.css";
+import project1 from "../assets/project1.jpeg";
+import project2 from "../assets/project2.jpeg";
+import project3 from "../assets/project3.jpeg";
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,8 +21,7 @@ const Carousel = () => {
       subtitle: "Delivering End-to-End Construction Excellence",
       description:
         "With over decades of experience, CI Associates provides comprehensive solutions across industrial, commercial, and civil sectors-combining innovation, precision, and quality.",
-      image:
-        "https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      image: project1,
       buttonText: "ABOUT US",
       buttonLink: "#about",
     },
@@ -29,8 +31,7 @@ const Carousel = () => {
       subtitle: "Civil, Steel, and Interior Experts",
       description:
         "Whether it's massive RCC structures or precision interior finishes, our expertise spans the entire project lifecycle-from concept to completion.",
-      image:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      image: project2,
       buttonText: "PROJECTS",
       buttonLink: "#projects",
     },
@@ -40,8 +41,7 @@ const Carousel = () => {
       subtitle: " A Legacy of Impactful Projects",
       description:
         "From Kochi Refineries and Technopark to Embassy Properties, our work with top-tier clients reflects our commitment to building trust and delivering excellence.",
-      image:
-        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      image: project3,
       buttonText: "OUR SERVICES",
       buttonLink: "#services",
     },
