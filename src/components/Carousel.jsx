@@ -11,6 +11,7 @@ const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const carouselRef = useRef(null);
 
   // Carousel data
@@ -47,14 +48,41 @@ const Carousel = () => {
     },
   ];
 
-  // Auto-advance carousel
+  // Preload all carousel images for instant switching
   useEffect(() => {
+    const preloadImages = () => {
+      const imagePromises = slides.map((slide) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = slide.image;
+        });
+      });
+
+      Promise.all(imagePromises)
+        .then(() => {
+          setImagesLoaded(true);
+        })
+        .catch((error) => {
+          console.warn('Some images failed to preload:', error);
+          setImagesLoaded(true); 
+        });
+    };
+
+    preloadImages();
+  }, [slides]);
+
+  // Auto-advance carousel (only start after images are loaded)
+  useEffect(() => {
+    if (!imagesLoaded) return;
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 10000); // Change slide every 5 seconds
+    }, 10000); // Change slide every 10 seconds
 
     return () => clearInterval(interval);
-  }, [slides.length, currentSlide]); // Reset timer when currentSlide changes
+  }, [slides.length, currentSlide, imagesLoaded]); // Reset timer when currentSlide changes
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -116,7 +144,13 @@ const Carousel = () => {
 
   return (
     <section className="carousel-section">
-      <div className="carousel-container">
+      {!imagesLoaded && (
+        <div className="carousel-loading">
+          <div className="loading-spinner"></div>
+          <p>Loading images...</p>
+        </div>
+      )}
+      <div className={`carousel-container ${imagesLoaded ? 'loaded' : 'loading'}`}>
         <div
           className="carousel-wrapper"
           ref={carouselRef}
