@@ -17,10 +17,8 @@ const Team = () => {
         setMembersPerPage(1); // 1 member per page on very small screens
       } else if (window.innerWidth <= 768) {
         setMembersPerPage(2); // 2 members per page on mobile
-      } else if (window.innerWidth <= 1024) {
-        setMembersPerPage(2); // 2 members per page on tablet
       } else {
-        setMembersPerPage(3); // 3 members per page on desktop
+        setMembersPerPage(3); // 3 members per page on tablet and desktop
       }
     };
 
@@ -54,10 +52,10 @@ const Team = () => {
     {
       id: 3,
       name: "Shaju Stephen",
-      title: "Manager",
+      title: "Chief Financial Officer (CFO)",
       initials: "SS",
       description:
-        "Handles administrative management and supports coordination across departments.",
+        "Chief Financial Officer responsible for financial strategy, budgeting, and fiscal management across all operations.",
     },
     {
       id: 4,

@@ -109,30 +109,58 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Initialize AOS with mobile-optimized settings
+  // Initialize AOS with responsive device-optimized settings
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    const isSlowDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+    const screenWidth = window.innerWidth;
+    const isMobile = screenWidth <= 768;
+    const isTablet = screenWidth > 768 && screenWidth <= 1024;
+    const isDesktop = screenWidth > 1024;
     
-    // Initialize AOS with mobile-friendly configuration
+    // Device capability detection
+    const isSlowDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+    const hasReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLowBandwidth = navigator.connection && 
+      (navigator.connection.effectiveType === 'slow-2g' || navigator.connection.effectiveType === '2g');
+    
+    // Dynamic configuration based on device and screen size
+    const getOptimalDuration = () => {
+      if (hasReducedMotion) return 200; // Very fast for accessibility
+      if (isSlowDevice || isLowBandwidth) return 400; // Fast for slow devices
+      if (isMobile) return 500; // Fast on mobile
+      if (isTablet) return 700; // Medium on tablet
+      return 900; // Full duration on desktop
+    };
+    
+    const getOptimalOffset = () => {
+      if (isMobile) return 50; // Early trigger on mobile
+      if (isTablet) return 70; // Medium trigger on tablet
+      return 100; // Standard trigger on desktop
+    };
+    
+    const getOptimalEasing = () => {
+      if (isMobile || isSlowDevice) return "ease-out"; // Simple easing for performance
+      return "ease-out-cubic"; // Rich easing for powerful devices
+    };
+    
+    // Initialize AOS with device-optimized configuration
     AOS.init({
-      duration: isMobile ? (isSlowDevice ? 400 : 500) : 900,
-      offset: isMobile ? 60 : 80, // Slightly smaller offset on mobile for earlier trigger
-      easing: isMobile ? "ease-out" : "ease-out-cubic",
+      duration: getOptimalDuration(),
+      offset: getOptimalOffset(),
+      easing: getOptimalEasing(),
       once: true,
       delay: 0,
       disable: function() {
         // Only disable if user explicitly prefers reduced motion
-        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        return hasReducedMotion;
       },
-      // Mobile-optimized settings
-      throttleDelay: isMobile ? 50 : 99,
-      debounceDelay: isMobile ? 25 : 50,
+      // Performance settings based on device capability
+      throttleDelay: isMobile ? 50 : (isTablet ? 75 : 99),
+      debounceDelay: isMobile ? 25 : (isTablet ? 35 : 50),
       startEvent: 'DOMContentLoaded',
       initClassName: 'aos-init',
       animatedClassName: 'aos-animate',
       useClassNames: false,
-      disableMutationObserver: false // Keep mutation observer for proper functionality
+      disableMutationObserver: isSlowDevice // Disable only on truly slow devices
     });
 
     // Handle window resize

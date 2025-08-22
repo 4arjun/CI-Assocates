@@ -98,6 +98,9 @@ const Footer = () => {
                     <a href="mailto:ciassociates@gmail.com">
                       ciassociates@gmail.com
                     </a>
+                    <a href="mailto:ciaassociates@hotmail.com">
+                      ciaassociates@hotmail.com
+                    </a>
                   </div>
                 </div>
               </div>
