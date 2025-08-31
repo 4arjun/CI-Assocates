@@ -32,41 +32,6 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div className="footer__contact">
-            {/* Kerala Office */}
-            <div
-              className="footer__office"
-              data-aos="fade-up"
-              data-aos-delay="150"
-            >
-              <div className="footer__office-header">
-                <h5>Kerala Office</h5>
-              </div>
-              <div className="footer__info">
-                <div className="footer__info-item">
-                  <MapPin size={16} />
-                  <span>
-                    Hawwa Tower, Aluva Road, Brahmapuram P.O., Karimugal,
-                    Ernakulam, Kerala - 682303
-                  </span>
-                </div>
-                <div className="footer__info-item">
-                  <Phone size={16} />
-                  <div className="footer__links">
-                    <a href="tel:+919846984607">+91 98469 84607</a>
-                    <a href="tel:+919847323237">+91 98473 23237</a>
-                  </div>
-                </div>
-                <div className="footer__info-item">
-                  <Mail size={16} />
-                  <div className="footer__links">
-                    {/* <a href="mailto:ciconstructions@hotmail.com">ciconstructions@hotmail.com</a> */}
-                    <a href="mailto:ciaconstructions@gmail.com">
-                      ciaconstructions@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             {/* Bengaluru Office */}
             <div

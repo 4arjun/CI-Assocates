@@ -127,7 +127,7 @@
 .footer__info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 25px;
 }
 
 .footer__info-item {
@@ -210,6 +210,14 @@
   .footer__main {
     gap: 50px;
   }
+
+  .footer__logo-text h3 {
+    font-size: 22px;
+  }
+
+  .footer__logo-text span {
+    font-size: 12px;
+  }
 }
 
 /* Responsive Design */
@@ -245,6 +253,14 @@
     text-align: left;
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .footer__logo-text h3 {
+    font-size: 21px;
+  }
+
+  .footer__logo-text span {
+    font-size: 11px;
   }
 
   .footer__back-to-top {
