@@ -73,6 +73,7 @@
   margin: 0 0 0 0;
   letter-spacing: 0.5px;
   font-family: "Montserrat", sans-serif;
+  
 }
 
 .footer__logo-text span {
@@ -81,6 +82,9 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+    background: linear-gradient(135deg, #e6470e 0%, #e78413 50%, #f3a406 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .footer__description {
