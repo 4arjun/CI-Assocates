@@ -43,6 +43,13 @@ const Team = () => {
     },
     {
       id: 2,
+      name: "Afin Abdul Salam",
+      title: "Associate Partner",
+      initials: "AAS",
+      description: "Associate Partner responsible for strategic planning and client relations.",
+    }
+    {
+      id: 3,
       name: "Shaji Kumar R.",
       title: "Chief Operating Officer (COO)",
       initials: "SK",
@@ -50,7 +57,7 @@ const Team = () => {
         "Senior executive (DME) responsible for day-to-day operations and efficient project execution.",
     },
     {
-      id: 3,
+      id: 4,
       name: "Shaju Stephen",
       title: "Chief Financial Officer (CFO)",
       initials: "SS",
@@ -58,7 +65,7 @@ const Team = () => {
         "Chief Financial Officer responsible for financial strategy, budgeting, and fiscal management across all operations.",
     },
     {
-      id: 4,
+      id: 5,
       name: "Manu Soman",
       title: "Project Coordinator",
       initials: "MS",
@@ -66,7 +73,7 @@ const Team = () => {
         "B.Tech (Civil) professional coordinating project timelines, resources, and client communications.",
     },
     {
-      id: 5,
+      id: 6,
       name: "Milben David",
       title: "Finance Consultant",
       initials: "MD",
@@ -74,7 +81,7 @@ const Team = () => {
         "Finance consultant (FCA, IP) managing financial planning, reporting, and regulatory compliance.",
     },
     {
-      id: 6,
+      id: 7,
       name: "Abhijith Babu",
       title: "Senior Manager (Engineering)",
       initials: "AB",
@@ -82,7 +89,7 @@ const Team = () => {
         "B.Tech (Civil) professional leading engineering operations with a focus on technical excellence.",
     },
     {
-      id: 7,
+      id: 8,
       name: "Rakesh",
       title: "Civil Engineer",
       initials: "R",
@@ -90,20 +97,12 @@ const Team = () => {
         "On-site civil engineer contributing to structural design, planning, and site management.",
     },
     {
-      id: 8,
+      id: 9,
       name: "Mohammed Asadullah M.S.",
       title: "Civil Engineer",
       initials: "MA",
       description:
         "Civil engineer contributing to project execution and structural design.",
-    },
-    {
-      id: 9,
-      name: "Anoop S",
-      title: "Site Engineer",
-      initials: "AS",
-      description:
-        "Site engineer responsible for on-site supervision and quality control.",
     },
   ];
 
