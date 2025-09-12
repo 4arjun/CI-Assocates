@@ -47,7 +47,7 @@ const Team = () => {
       title: "Associate Partner",
       initials: "AAS",
       description: "Associate Partner responsible for strategic planning and client relations.",
-    }
+    },
     {
       id: 3,
       name: "Shaji Kumar R.",
