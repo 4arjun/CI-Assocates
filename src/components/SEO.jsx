@@ -66,6 +66,10 @@ const SEO = ({
       "priceRange": "$$$$",
       "aggregateRating": {
         "@type": "AggregateRating",
+        "itemReviewed": {
+          "@type": "ConstructionCompany",
+          "name": "CI Associates"
+        },
         "ratingValue": "4.8",
         "reviewCount": "150",
         "bestRating": "5",
