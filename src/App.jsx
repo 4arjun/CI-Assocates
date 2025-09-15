@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
+import SEO from "./components/SEO";
+import PerformanceOptimizer from "./components/PerformanceOptimizer";
 import SplashScreen from "./SplashScreen";
 import Header from "./components/Header";
 import Carousel from "./components/Carousel";
@@ -198,6 +200,8 @@ const App = () => {
 
   return (
     <div className="App">
+      <SEO />
+      <PerformanceOptimizer />
       <Header
         isScrolled={isScrolled}
         isMobileMenuOpen={isMobileMenuOpen}

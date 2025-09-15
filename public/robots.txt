@@ -1,0 +1,28 @@
+# robots.txt for CI Associates Construction Company
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://ciassociates.in/sitemap.xml
+
+# Block access to development and admin files
+Disallow: /admin/
+Disallow: /.env
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /build/
+Disallow: /dist/
+
+# Allow search engines to crawl CSS and JS files
+Allow: /*.css$
+Allow: /*.js$
+
+# Crawl delay (optional - be respectful to search engines)
+Crawl-delay: 1
+
+# Block specific bots that might waste resources (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10

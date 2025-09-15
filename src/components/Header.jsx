@@ -68,7 +68,12 @@ const Header = ({
         <div className="logo-section">
           <div className="logo">
             <div className="logo-icon">
-              <img src={logoImage} alt="CI Associates Logo" />
+              <img 
+                src={logoImage} 
+                alt="CI Associates - Premier Construction Company Kerala Logo" 
+                width="50" 
+                height="50"
+              />
             </div>
             <span className="company-name">CI ASSOCIATES</span>
           </div>

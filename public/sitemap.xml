@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://ciassociates.in/</loc>
+    <lastmod>2025-09-15T13:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://ciassociates.in/logo.png</image:loc>
+      <image:title>CI Associates Construction Company Logo</image:title>
+      <image:caption>Premier construction company in Kerala specializing in industrial and commercial projects</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://ciassociates.in/#about</loc>
+    <lastmod>2025-09-15T13:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Services Section -->
+  <url>
+    <loc>https://ciassociates.in/#services</loc>
+    <lastmod>2025-09-15T13:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1541888946425-d81bb19240f5</image:loc>
+      <image:title>Industrial & Commercial Construction Projects</image:title>
+      <image:caption>Multi-storied buildings, steel structures, and warehouses by CI Associates</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1581091226825-a6a2a5aee158</image:loc>
+      <image:title>Steel Fabrication Services</image:title>
+      <image:caption>Custom steel fabrication and structural steel work</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Projects Section -->
+  <url>
+    <loc>https://ciassociates.in/#projects</loc>
+    <lastmod>2025-09-15T13:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://ciassociates.in/src/assets/project1.jpeg</image:loc>
+      <image:title>CI Associates Project 1</image:title>
+      <image:caption>Completed construction project by CI Associates</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ciassociates.in/src/assets/project2.jpeg</image:loc>
+      <image:title>CI Associates Project 2</image:title>
+      <image:caption>Industrial construction project showcase</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ciassociates.in/src/assets/project3.jpeg</image:loc>
+      <image:title>CI Associates Project 3</image:title>
+      <image:caption>Commercial building construction project</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Team Section -->
+  <url>
+    <loc>https://ciassociates.in/#team</loc>
+    <lastmod>2025-09-15T13:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Contact Section -->
+  <url>
+    <loc>https://ciassociates.in/#contact</loc>
+    <lastmod>2025-09-15T13:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+</urlset>

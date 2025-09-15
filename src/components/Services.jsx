@@ -185,7 +185,13 @@ const Services = ({ isScrolling }) => {
               data-aos-delay={100 * (index + 1)}
             >
               <div className="service-image">
-                <img src={service.image} alt={service.title} loading="lazy" />
+                <img 
+                  src={service.image} 
+                  alt={`${service.title} - Professional construction services by CI Associates Kerala`} 
+                  loading="lazy" 
+                  width="800"
+                  height="600"
+                />
                 <div className="service-caption">
                   <h3 className="service-title">{service.title}</h3>
                 </div>
@@ -228,8 +234,10 @@ const Services = ({ isScrolling }) => {
             <div className="modal-header">
               <img
                 src={selectedService.image}
-                alt={selectedService.title}
+                alt={`${selectedService.title} - Detailed view of CI Associates construction service`}
                 className="modal-image"
+                width="800"
+                height="400"
               />
               <h3 id="service-modal-title" className="modal-title">
                 {selectedService.title}

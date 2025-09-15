@@ -168,13 +168,13 @@ const Carousel = () => {
                 >
                   {slide.subtitle}
                 </span>
-                <h1
+                <h2
                   className="carousel-title"
                   data-aos="fade-up"
                   data-aos-delay="300"
                 >
                   {slide.title}
-                </h1>
+                </h2>
                 <p
                   className="carousel-description"
                   data-aos="fade-up"
