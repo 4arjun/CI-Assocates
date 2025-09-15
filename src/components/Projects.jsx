@@ -11,12 +11,12 @@ const Projects = () => {
 
 
   const projectItems = [
-    { src: project1, type: "Residential", location: "Kochi, Kerala" },
-    { src: project2, type: "Residential", location: "Bengaluru, Karnataka" },
-    { src: project3, type: "Residential", location: "Trivandrum, Kerala" },
-    { src: project4, type: "Commercial", location: "Coimbatore, Tamil Nadu" },
-    { src: project5, type: "Commercial", location: "Kakkanad, Kerala" },
-    { src: project6, type: "Commercial", location: "Calicut, Kerala" },
+    { src: project1, type: "Residential", location: "Bangalore" },
+    { src: project2, type: "Residential", location: "Bangalore" },
+    { src: project3, type: "Residential", location: "Bangalore" },
+    { src: project4, type: "Commercial", location: "Bangalore" },
+    { src: project5, type: "Commercial", location: "Kochi" },
+    { src: project6, type: "Commercial", location: "Kochi" },
   ];
 
   return (
