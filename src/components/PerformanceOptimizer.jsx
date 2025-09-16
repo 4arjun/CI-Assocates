@@ -35,7 +35,7 @@ const PerformanceOptimizer = () => {
       const criticalImages = [
         '/src/assets/logo.jpeg',
         '/src/assets/project1.jpeg',
-        '/public/logo.png'
+        '/logo.png'
       ];
 
       criticalImages.forEach(src => {
