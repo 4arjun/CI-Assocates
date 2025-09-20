@@ -14,7 +14,7 @@
     <priority>1.0</priority>
     <mobile:mobile/>
     <image:image>
-      <image:loc>https://ciassociates.in/logo.png</image:loc>
+      <image:loc>https://ciassociates.in/android-chrome-512x512.png</image:loc>
       <image:title>CI Associates Construction Company Logo</image:title>
       <image:caption>Premier construction company in Kerala specializing in industrial and commercial projects</image:caption>
     </image:image>
@@ -56,17 +56,17 @@
     <priority>0.8</priority>
     <mobile:mobile/>
     <image:image>
-      <image:loc>https://ciassociates.in/src/assets/project1.jpeg</image:loc>
+      <image:loc>https://ciassociates.in/project1.jpeg</image:loc>
       <image:title>CI Associates Project 1</image:title>
       <image:caption>Completed construction project by CI Associates</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://ciassociates.in/src/assets/project2.jpeg</image:loc>
+      <image:loc>https://ciassociates.in/project2.jpeg</image:loc>
       <image:title>CI Associates Project 2</image:title>
       <image:caption>Industrial construction project showcase</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://ciassociates.in/src/assets/project3.jpeg</image:loc>
+      <image:loc>https://ciassociates.in/project3.jpeg</image:loc>
       <image:title>CI Associates Project 3</image:title>
       <image:caption>Commercial building construction project</image:caption>
     </image:image>

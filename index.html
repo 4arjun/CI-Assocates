@@ -29,18 +29,17 @@
     <meta property="og:locale" content="en_IN" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://ciassociates.in/" />
-    <meta property="twitter:title" content="CI Associates — Premier Construction Company in Kerala" />
-    <meta property="twitter:description" content="Kerala's leading construction company specializing in industrial buildings, commercial projects, steel fabrication, and civil works. 25+ years of excellence." />
-    <meta property="twitter:image" content="https://ciassociates.in/android-chrome-512x512.png" />
-    <meta property="twitter:image:alt" content="CI Associates Construction Company" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://ciassociates.in/" />
+    <meta name="twitter:title" content="CI Associates — Premier Construction Company in Kerala" />
+    <meta name="twitter:description" content="Kerala's leading construction company specializing in industrial buildings, commercial projects, steel fabrication, and civil works. 25+ years of excellence." />
+    <meta name="twitter:image" content="https://ciassociates.in/android-chrome-512x512.png" />
+    <meta name="twitter:image:alt" content="CI Associates Construction Company" />
     
     <!-- Business/Local SEO -->
     <meta name="geo.region" content="IN-KL" />
     <meta name="geo.placename" content="Kochi, Kerala" />
     <meta name="geo.position" content="9.9312;76.2673" />
-    <meta name="ICBM" content="9.9312, 76.2673" />
     
     <!-- Icons and Theme -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -56,6 +55,10 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://ciassociates.in/" />
     
+    <!-- Google Search Console Verification (Add your verification code here) -->
+     <meta name="google-site-verification" content="google-site-verification=2dDsgAV5QOsyqRTR68CYfThJ6MxDGGisOiFGtV3ZgSs
+     " /> 
+    
     <!-- Preconnect and DNS Prefetch for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,16 +70,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Critical Resource Preloading -->
-    <link rel="preload" as="image" href="/src/assets/project1.jpeg" />
-    <link rel="preload" as="image" href="/src/assets/project2.jpeg" />
-    <link rel="preload" as="image" href="/src/assets/project3.jpeg" />
-    <link rel="preload" as="image" href="/src/assets/logo.jpeg" />
+    <link rel="preload" as="image" href="/project1.jpeg" />
+    <link rel="preload" as="image" href="/project2.jpeg" />
+    <link rel="preload" as="image" href="/project3.jpeg" />
+    <link rel="preload" as="image" href="/logo.png" />
     
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "additionalType": "https://schema.org/GeneralContractor",
       "name": "CI Associates",
       "alternateName": "CI Associates Construction",
       "description": "Premier construction company in Kerala specializing in industrial, commercial, and civil projects with 25+ years of excellence across South India",
@@ -119,13 +123,6 @@
         "https://www.linkedin.com/company/ci-associates",
         "https://www.facebook.com/ciassociates"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "150",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Construction Services",
